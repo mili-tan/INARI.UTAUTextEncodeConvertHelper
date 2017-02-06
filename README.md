@@ -1,0 +1,2 @@
+# UTAUTextEncodeConvertHelper
+简单而且辣鸡的UTAU相关用文件编码转换工具
