@@ -16,6 +16,8 @@ namespace UTAUTextEncodeConvertHelper
     {
 
         string FileName;
+        string SafeFileName;
+        Stream Streams;
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
 
@@ -40,7 +42,8 @@ namespace UTAUTextEncodeConvertHelper
             if (touchStone == DialogResult.OK)
             {
                 FileName = openFileDialog1.FileName;
-                richTextBoxAfter.Text = File.ReadAllText(FileName);
+                SafeFileName= openFileDialog1.SafeFileName;
+                richTextBoxAfter.Text = File.ReadAllText(FileName,Encoding.Default);
             }
         }
 
@@ -50,7 +53,7 @@ namespace UTAUTextEncodeConvertHelper
             {
                 if (FileName == null || FileName == "" || FileName == " ")
                 {
-                    MessageBox.Show("文件名为空" + "\n\r保存文件失败。");
+                    MessageBox.Show("文件名为空" + "\n\r\n\r保存文件失败。");
                 }
                 else if (richTextBoxBefore.Text == "")
                 {
@@ -59,12 +62,30 @@ namespace UTAUTextEncodeConvertHelper
                 else
                 {
                     File.WriteAllText(FileName, richTextBoxBefore.Text);
-                    MessageBox.Show("保存成功！");
+                    MessageBox.Show("文件保存成功！");
                 }
             }
             catch(Exception ErrorMsg)
             {
-                MessageBox.Show(ErrorMsg + "\n\r保存文件失败。");
+                MessageBox.Show(ErrorMsg + "\n\r\n\r保存文件失败。");
+            }
+        }
+
+        private void buttonSaveAs_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = SafeFileName;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((Streams = saveFileDialog1.OpenFile()) != null)
+                {
+                    using (StreamWriter sWrite = new StreamWriter(Streams))
+                    {
+                        sWrite.Write(richTextBoxBefore.Text);
+                    }
+
+                    Streams.Close();
+                    MessageBox.Show("另存为成功");
+                }
             }
         }
     }

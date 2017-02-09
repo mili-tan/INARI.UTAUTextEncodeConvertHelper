@@ -31,29 +31,29 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageText = new System.Windows.Forms.TabPage();
+            this.groupBoxBefore = new System.Windows.Forms.GroupBox();
+            this.richTextBoxBefore = new System.Windows.Forms.RichTextBox();
+            this.groupBoxAfter = new System.Windows.Forms.GroupBox();
+            this.richTextBoxAfter = new System.Windows.Forms.RichTextBox();
             this.buttonConvertToCHN = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
-            this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.groupBoxAfter = new System.Windows.Forms.GroupBox();
-            this.richTextBoxAfter = new System.Windows.Forms.RichTextBox();
-            this.groupBoxBefore = new System.Windows.Forms.GroupBox();
-            this.richTextBoxBefore = new System.Windows.Forms.RichTextBox();
+            this.buttonSaveAs = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
-            this.groupBoxAfter.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
+            this.groupBoxAfter.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "project.ust";
+            this.openFileDialog1.FileName = "Project.ust";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageText);
-            this.tabControl1.Controls.Add(this.tabPageFile);
             this.tabControl1.Location = new System.Drawing.Point(13, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -62,6 +62,7 @@
             // 
             // tabPageText
             // 
+            this.tabPageText.Controls.Add(this.buttonSaveAs);
             this.tabPageText.Controls.Add(this.groupBoxBefore);
             this.tabPageText.Controls.Add(this.groupBoxAfter);
             this.tabPageText.Controls.Add(this.buttonConvertToCHN);
@@ -75,6 +76,44 @@
             this.tabPageText.TabIndex = 0;
             this.tabPageText.Text = "文本内容";
             this.tabPageText.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxBefore
+            // 
+            this.groupBoxBefore.Controls.Add(this.richTextBoxBefore);
+            this.groupBoxBefore.Location = new System.Drawing.Point(350, 7);
+            this.groupBoxBefore.Name = "groupBoxBefore";
+            this.groupBoxBefore.Size = new System.Drawing.Size(200, 290);
+            this.groupBoxBefore.TabIndex = 15;
+            this.groupBoxBefore.TabStop = false;
+            this.groupBoxBefore.Text = "转换后";
+            // 
+            // richTextBoxBefore
+            // 
+            this.richTextBoxBefore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxBefore.Location = new System.Drawing.Point(6, 20);
+            this.richTextBoxBefore.Name = "richTextBoxBefore";
+            this.richTextBoxBefore.Size = new System.Drawing.Size(188, 264);
+            this.richTextBoxBefore.TabIndex = 14;
+            this.richTextBoxBefore.Text = "";
+            // 
+            // groupBoxAfter
+            // 
+            this.groupBoxAfter.Controls.Add(this.richTextBoxAfter);
+            this.groupBoxAfter.Location = new System.Drawing.Point(7, 7);
+            this.groupBoxAfter.Name = "groupBoxAfter";
+            this.groupBoxAfter.Size = new System.Drawing.Size(200, 290);
+            this.groupBoxAfter.TabIndex = 14;
+            this.groupBoxAfter.TabStop = false;
+            this.groupBoxAfter.Text = "转换前";
+            // 
+            // richTextBoxAfter
+            // 
+            this.richTextBoxAfter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxAfter.Location = new System.Drawing.Point(6, 20);
+            this.richTextBoxAfter.Name = "richTextBoxAfter";
+            this.richTextBoxAfter.Size = new System.Drawing.Size(188, 264);
+            this.richTextBoxAfter.TabIndex = 13;
+            this.richTextBoxAfter.Text = "";
             // 
             // buttonConvertToCHN
             // 
@@ -92,7 +131,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(137, 23);
             this.buttonSave.TabIndex = 10;
-            this.buttonSave.Text = "保存更改";
+            this.buttonSave.Text = "保存转换后内容";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -116,53 +155,15 @@
             this.buttonRead.UseVisualStyleBackColor = true;
             this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
-            // tabPageFile
+            // buttonSaveAs
             // 
-            this.tabPageFile.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFile.Name = "tabPageFile";
-            this.tabPageFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFile.Size = new System.Drawing.Size(558, 303);
-            this.tabPageFile.TabIndex = 1;
-            this.tabPageFile.Text = "文件名";
-            this.tabPageFile.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxAfter
-            // 
-            this.groupBoxAfter.Controls.Add(this.richTextBoxAfter);
-            this.groupBoxAfter.Location = new System.Drawing.Point(7, 7);
-            this.groupBoxAfter.Name = "groupBoxAfter";
-            this.groupBoxAfter.Size = new System.Drawing.Size(200, 290);
-            this.groupBoxAfter.TabIndex = 14;
-            this.groupBoxAfter.TabStop = false;
-            this.groupBoxAfter.Text = "转换前";
-            // 
-            // richTextBoxAfter
-            // 
-            this.richTextBoxAfter.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxAfter.Location = new System.Drawing.Point(6, 20);
-            this.richTextBoxAfter.Name = "richTextBoxAfter";
-            this.richTextBoxAfter.Size = new System.Drawing.Size(188, 264);
-            this.richTextBoxAfter.TabIndex = 13;
-            this.richTextBoxAfter.Text = "";
-            // 
-            // groupBoxBefore
-            // 
-            this.groupBoxBefore.Controls.Add(this.richTextBoxBefore);
-            this.groupBoxBefore.Location = new System.Drawing.Point(350, 7);
-            this.groupBoxBefore.Name = "groupBoxBefore";
-            this.groupBoxBefore.Size = new System.Drawing.Size(200, 290);
-            this.groupBoxBefore.TabIndex = 15;
-            this.groupBoxBefore.TabStop = false;
-            this.groupBoxBefore.Text = "转换后";
-            // 
-            // richTextBoxBefore
-            // 
-            this.richTextBoxBefore.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxBefore.Location = new System.Drawing.Point(6, 20);
-            this.richTextBoxBefore.Name = "richTextBoxBefore";
-            this.richTextBoxBefore.Size = new System.Drawing.Size(188, 264);
-            this.richTextBoxBefore.TabIndex = 14;
-            this.richTextBoxBefore.Text = "";
+            this.buttonSaveAs.Location = new System.Drawing.Point(210, 145);
+            this.buttonSaveAs.Name = "buttonSaveAs";
+            this.buttonSaveAs.Size = new System.Drawing.Size(137, 23);
+            this.buttonSaveAs.TabIndex = 16;
+            this.buttonSaveAs.Text = "另存为转换后内容";
+            this.buttonSaveAs.UseVisualStyleBackColor = true;
+            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
             // 
             // Form1
             // 
@@ -171,11 +172,11 @@
             this.ClientSize = new System.Drawing.Size(589, 341);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UTAU Text Encode Convert Helper 0.1";
             this.tabControl1.ResumeLayout(false);
             this.tabPageText.ResumeLayout(false);
-            this.groupBoxAfter.ResumeLayout(false);
             this.groupBoxBefore.ResumeLayout(false);
+            this.groupBoxAfter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -189,11 +190,12 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonConvertToJPN;
         private System.Windows.Forms.Button buttonRead;
-        private System.Windows.Forms.TabPage tabPageFile;
         private System.Windows.Forms.GroupBox groupBoxBefore;
         private System.Windows.Forms.RichTextBox richTextBoxBefore;
         private System.Windows.Forms.GroupBox groupBoxAfter;
         private System.Windows.Forms.RichTextBox richTextBoxAfter;
+        private System.Windows.Forms.Button buttonSaveAs;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
