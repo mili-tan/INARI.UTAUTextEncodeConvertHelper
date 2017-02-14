@@ -36,6 +36,11 @@ namespace UTAUTextEncodeConvertHelper
             richTextBoxBefore.Text = JPN.GetString(CHN.GetBytes(richTextBoxAfter.Text));
         }
 
+        private void buttonConvertToUTF8_Click(object sender, EventArgs e)
+        {
+            richTextBoxBefore.Text = Encoding.UTF8.GetString(CHN.GetBytes(richTextBoxAfter.Text));
+        }
+
         private void buttonRead_Click(object sender, EventArgs e)
         {
             DialogResult touchStone = openFileDialog1.ShowDialog();
