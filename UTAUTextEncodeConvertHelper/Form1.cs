@@ -88,5 +88,11 @@ namespace UTAUTextEncodeConvertHelper
                 }
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MaximizeBox = false;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
     }
 }

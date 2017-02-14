@@ -31,6 +31,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageText = new System.Windows.Forms.TabPage();
+            this.buttonSaveAs = new System.Windows.Forms.Button();
             this.groupBoxBefore = new System.Windows.Forms.GroupBox();
             this.richTextBoxBefore = new System.Windows.Forms.RichTextBox();
             this.groupBoxAfter = new System.Windows.Forms.GroupBox();
@@ -39,7 +40,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
-            this.buttonSaveAs = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
@@ -76,6 +76,16 @@
             this.tabPageText.TabIndex = 0;
             this.tabPageText.Text = "文本内容";
             this.tabPageText.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveAs
+            // 
+            this.buttonSaveAs.Location = new System.Drawing.Point(210, 145);
+            this.buttonSaveAs.Name = "buttonSaveAs";
+            this.buttonSaveAs.Size = new System.Drawing.Size(137, 23);
+            this.buttonSaveAs.TabIndex = 16;
+            this.buttonSaveAs.Text = "另存为转换后内容";
+            this.buttonSaveAs.UseVisualStyleBackColor = true;
+            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
             // 
             // groupBoxBefore
             // 
@@ -155,16 +165,6 @@
             this.buttonRead.UseVisualStyleBackColor = true;
             this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
-            // buttonSaveAs
-            // 
-            this.buttonSaveAs.Location = new System.Drawing.Point(210, 145);
-            this.buttonSaveAs.Name = "buttonSaveAs";
-            this.buttonSaveAs.Size = new System.Drawing.Size(137, 23);
-            this.buttonSaveAs.TabIndex = 16;
-            this.buttonSaveAs.Text = "另存为转换后内容";
-            this.buttonSaveAs.UseVisualStyleBackColor = true;
-            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -173,6 +173,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "UTAU Text Encode Convert Helper 0.1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageText.ResumeLayout(false);
             this.groupBoxBefore.ResumeLayout(false);
