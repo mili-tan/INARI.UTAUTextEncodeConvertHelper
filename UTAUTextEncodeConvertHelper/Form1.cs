@@ -28,17 +28,20 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
         {
-            richTextBoxBefore.Text = CHN.GetString(JPN.GetBytes(richTextBoxAfter.Text));
+            //richTextBoxBefore.Text = CHN.GetString(JPN.GetBytes(richTextBoxAfter.Text));
+            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, JPN);
         }
 
         private void buttonConvertToCHN_Click(object sender, EventArgs e)
         {
-            richTextBoxBefore.Text = JPN.GetString(CHN.GetBytes(richTextBoxAfter.Text));
+            //richTextBoxBefore.Text = JPN.GetString(CHN.GetBytes(richTextBoxAfter.Text));
+            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, CHN);
         }
 
         private void buttonConvertToUTF8_Click(object sender, EventArgs e)
         {
-            richTextBoxBefore.Text = Encoding.UTF8.GetString(CHN.GetBytes(richTextBoxAfter.Text));
+            //richTextBoxBefore.Text = Encoding.UTF8.GetString(CHN.GetBytes(richTextBoxAfter.Text));
+            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, Encoding.UTF8);
         }
 
         private void buttonRead_Click(object sender, EventArgs e)
