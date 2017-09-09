@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageText = new System.Windows.Forms.TabPage();
             this.buttonConvertToUTF8 = new System.Windows.Forms.Button();
@@ -41,16 +41,16 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
             this.groupBoxAfter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "Project.ust";
+            this.openFileDialog.FileName = "Project.ust";
             // 
             // tabControl1
             // 
@@ -84,7 +84,7 @@
             // 
             // buttonConvertToUTF8
             // 
-            this.buttonConvertToUTF8.Location = new System.Drawing.Point(280, 145);
+            this.buttonConvertToUTF8.Location = new System.Drawing.Point(280, 100);
             this.buttonConvertToUTF8.Name = "buttonConvertToUTF8";
             this.buttonConvertToUTF8.Size = new System.Drawing.Size(183, 29);
             this.buttonConvertToUTF8.TabIndex = 17;
@@ -94,7 +94,7 @@
             // 
             // buttonSaveAs
             // 
-            this.buttonSaveAs.Location = new System.Drawing.Point(280, 218);
+            this.buttonSaveAs.Location = new System.Drawing.Point(280, 173);
             this.buttonSaveAs.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSaveAs.Name = "buttonSaveAs";
             this.buttonSaveAs.Size = new System.Drawing.Size(183, 29);
@@ -149,7 +149,7 @@
             // 
             // buttonConvertToCHN
             // 
-            this.buttonConvertToCHN.Location = new System.Drawing.Point(280, 109);
+            this.buttonConvertToCHN.Location = new System.Drawing.Point(280, 64);
             this.buttonConvertToCHN.Margin = new System.Windows.Forms.Padding(4);
             this.buttonConvertToCHN.Name = "buttonConvertToCHN";
             this.buttonConvertToCHN.Size = new System.Drawing.Size(183, 29);
@@ -160,7 +160,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(280, 182);
+            this.buttonSave.Location = new System.Drawing.Point(280, 137);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(183, 29);
@@ -171,7 +171,7 @@
             // 
             // buttonConvertToJPN
             // 
-            this.buttonConvertToJPN.Location = new System.Drawing.Point(280, 72);
+            this.buttonConvertToJPN.Location = new System.Drawing.Point(280, 27);
             this.buttonConvertToJPN.Margin = new System.Windows.Forms.Padding(4);
             this.buttonConvertToJPN.Name = "buttonConvertToJPN";
             this.buttonConvertToJPN.Size = new System.Drawing.Size(183, 29);
@@ -182,7 +182,7 @@
             // 
             // buttonRead
             // 
-            this.buttonRead.Location = new System.Drawing.Point(280, 35);
+            this.buttonRead.Location = new System.Drawing.Point(280, 210);
             this.buttonRead.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRead.Name = "buttonRead";
             this.buttonRead.Size = new System.Drawing.Size(183, 29);
@@ -211,7 +211,7 @@
 
         #endregion
 
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageText;
         private System.Windows.Forms.Button buttonConvertToCHN;
@@ -223,7 +223,7 @@
         private System.Windows.Forms.GroupBox groupBoxAfter;
         private System.Windows.Forms.RichTextBox richTextBoxAfter;
         private System.Windows.Forms.Button buttonSaveAs;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button buttonConvertToUTF8;
     }
 }

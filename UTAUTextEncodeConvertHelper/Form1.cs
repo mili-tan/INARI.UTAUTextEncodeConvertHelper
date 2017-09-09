@@ -17,6 +17,7 @@ namespace UTAUTextEncodeConvertHelper
 
         string FileName;
         string SafeFileName;
+        bool UtauPlugin = false;
         Stream Streams;
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
@@ -26,31 +27,45 @@ namespace UTAUTextEncodeConvertHelper
             InitializeComponent();
         }
 
+        public Form1(string ustPath)
+        {
+            InitializeComponent();
+            if (!string.IsNullOrEmpty(ustPath))
+            {
+                buttonRead.Hide();
+                buttonSaveAs.Hide();
+                buttonSave.Text = "确定";
+                UtauPlugin = true;
+                richTextBoxAfter.Text = File.ReadAllText(ustPath, Encoding.Default);
+                FileName = ustPath;
+            }
+        }
+
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
         {
             //richTextBoxBefore.Text = CHN.GetString(JPN.GetBytes(richTextBoxAfter.Text));
-            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, JPN);
+            richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, JPN);
         }
 
         private void buttonConvertToCHN_Click(object sender, EventArgs e)
         {
             //richTextBoxBefore.Text = JPN.GetString(CHN.GetBytes(richTextBoxAfter.Text));
-            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, CHN);
+            richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, CHN);
         }
 
         private void buttonConvertToUTF8_Click(object sender, EventArgs e)
         {
             //richTextBoxBefore.Text = Encoding.UTF8.GetString(CHN.GetBytes(richTextBoxAfter.Text));
-            richTextBoxBefore.Text = encodeConvert.Converter(richTextBoxAfter.Text, Encoding.UTF8);
+            richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, Encoding.UTF8);
         }
 
         private void buttonRead_Click(object sender, EventArgs e)
         {
-            DialogResult touchStone = openFileDialog1.ShowDialog();
+            DialogResult touchStone = openFileDialog.ShowDialog();
             if (touchStone == DialogResult.OK)
             {
-                FileName = openFileDialog1.FileName;
-                SafeFileName= openFileDialog1.SafeFileName;
+                FileName = openFileDialog.FileName;
+                SafeFileName= openFileDialog.SafeFileName;
                 richTextBoxAfter.Text = File.ReadAllText(FileName,Encoding.Default);
             }
         }
@@ -77,14 +92,18 @@ namespace UTAUTextEncodeConvertHelper
             {
                 MessageBox.Show(ErrorMsg + "\n\r\n\r保存文件失败。");
             }
+            if (UtauPlugin)
+            {
+                Close();
+            }
         }
 
         private void buttonSaveAs_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.FileName = SafeFileName;
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            saveFileDialog.FileName = SafeFileName;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if ((Streams = saveFileDialog1.OpenFile()) != null)
+                if ((Streams = saveFileDialog.OpenFile()) != null)
                 {
                     using (StreamWriter sWrite = new StreamWriter(Streams))
                     {

@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace UTAUTextEncodeConvertHelper
 {
-    class encodeConvert
+    class EncodeConvert
     {
-        public static String Converter(string str,Encoding encode)
+        public static string Converter(string str,Encoding encode)
         {
             if (encode == Encoding.GetEncoding("Shift_JIS"))
             {
-                String strAfterConvert = Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("Shift_JIS").GetBytes(str));
+                string strAfterConvert = Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("Shift_JIS").GetBytes(str));
                 return strAfterConvert;
             }
             else if (encode == Encoding.GetEncoding("gb2312"))
             {
-                String strAfterConvert = Encoding.GetEncoding("Shift_JIS").GetString(Encoding.GetEncoding("gb2312").GetBytes(str));
+                string strAfterConvert = Encoding.GetEncoding("Shift_JIS").GetString(Encoding.GetEncoding("gb2312").GetBytes(str));
                 return strAfterConvert;
             }
             else if (encode == Encoding.UTF8)
             {
-                String strAfterConvert = Encoding.UTF8.GetString(Encoding.GetEncoding("gb2312").GetBytes(str));
+                string strAfterConvert = Encoding.UTF8.GetString(Encoding.GetEncoding("gb2312").GetBytes(str));
                 return strAfterConvert;
             }
             else
