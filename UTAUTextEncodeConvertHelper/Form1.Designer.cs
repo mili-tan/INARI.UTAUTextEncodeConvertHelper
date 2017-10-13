@@ -42,10 +42,16 @@
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.tabPageFile = new System.Windows.Forms.TabPage();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.buttonOpenPath = new System.Windows.Forms.Button();
+            this.labelFoldPath = new System.Windows.Forms.Label();
+            this.listBoxAfter = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
             this.groupBoxAfter.SuspendLayout();
+            this.tabPageFile.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -55,6 +61,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageText);
+            this.tabControl1.Controls.Add(this.tabPageFile);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.Location = new System.Drawing.Point(17, 6);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -79,7 +86,7 @@
             this.tabPageText.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageText.Size = new System.Drawing.Size(747, 378);
             this.tabPageText.TabIndex = 0;
-            this.tabPageText.Text = "文本内容";
+            this.tabPageText.Text = "文本";
             this.tabPageText.UseVisualStyleBackColor = true;
             // 
             // buttonConvertToUTF8
@@ -191,6 +198,51 @@
             this.buttonRead.UseVisualStyleBackColor = true;
             this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
+            // tabPageFile
+            // 
+            this.tabPageFile.Controls.Add(this.listBoxAfter);
+            this.tabPageFile.Controls.Add(this.labelFoldPath);
+            this.tabPageFile.Controls.Add(this.buttonOpenPath);
+            this.tabPageFile.Location = new System.Drawing.Point(4, 29);
+            this.tabPageFile.Name = "tabPageFile";
+            this.tabPageFile.Size = new System.Drawing.Size(747, 378);
+            this.tabPageFile.TabIndex = 1;
+            this.tabPageFile.Text = "文件名";
+            this.tabPageFile.UseVisualStyleBackColor = true;
+            // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.Description = "请选择文件路径";
+            this.folderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // buttonOpenPath
+            // 
+            this.buttonOpenPath.Location = new System.Drawing.Point(16, 15);
+            this.buttonOpenPath.Name = "buttonOpenPath";
+            this.buttonOpenPath.Size = new System.Drawing.Size(125, 27);
+            this.buttonOpenPath.TabIndex = 0;
+            this.buttonOpenPath.Text = "打开文件夹";
+            this.buttonOpenPath.UseVisualStyleBackColor = true;
+            this.buttonOpenPath.Click += new System.EventHandler(this.buttonOpenPath_Click);
+            // 
+            // labelFoldPath
+            // 
+            this.labelFoldPath.AutoSize = true;
+            this.labelFoldPath.Location = new System.Drawing.Point(147, 18);
+            this.labelFoldPath.Name = "labelFoldPath";
+            this.labelFoldPath.Size = new System.Drawing.Size(99, 20);
+            this.labelFoldPath.TabIndex = 1;
+            this.labelFoldPath.Text = "文件夹路径：";
+            // 
+            // listBoxAfter
+            // 
+            this.listBoxAfter.FormattingEnabled = true;
+            this.listBoxAfter.ItemHeight = 20;
+            this.listBoxAfter.Location = new System.Drawing.Point(16, 49);
+            this.listBoxAfter.Name = "listBoxAfter";
+            this.listBoxAfter.Size = new System.Drawing.Size(230, 164);
+            this.listBoxAfter.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -205,6 +257,8 @@
             this.tabPageText.ResumeLayout(false);
             this.groupBoxBefore.ResumeLayout(false);
             this.groupBoxAfter.ResumeLayout(false);
+            this.tabPageFile.ResumeLayout(false);
+            this.tabPageFile.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -225,6 +279,11 @@
         private System.Windows.Forms.Button buttonSaveAs;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button buttonConvertToUTF8;
+        private System.Windows.Forms.TabPage tabPageFile;
+        private System.Windows.Forms.Button buttonOpenPath;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Label labelFoldPath;
+        private System.Windows.Forms.ListBox listBoxAfter;
     }
 }
 

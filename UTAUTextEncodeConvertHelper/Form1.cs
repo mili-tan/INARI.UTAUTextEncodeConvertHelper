@@ -17,6 +17,7 @@ namespace UTAUTextEncodeConvertHelper
 
         string FileName;
         string SafeFileName;
+        string foldPath;
         bool UtauPlugin = false;
         Stream Streams;
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
@@ -120,6 +121,21 @@ namespace UTAUTextEncodeConvertHelper
         {
             MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        private void buttonOpenPath_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                foldPath = folderBrowserDialog.SelectedPath;
+                DirectoryInfo folder = new DirectoryInfo(foldPath);
+                labelFoldPath.Text = "文件夹路径：" + foldPath;
+                listBoxAfter.Items.Clear();
+                foreach (FileInfo file in folder.GetFiles("*.*"))
+                {
+                    listBoxAfter.Items.Add(file.Name);
+                }
+            }
         }
     }
 }
