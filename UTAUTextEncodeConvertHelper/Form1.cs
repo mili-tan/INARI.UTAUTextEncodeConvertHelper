@@ -137,5 +137,32 @@ namespace UTAUTextEncodeConvertHelper
                 }
             }
         }
+
+        private void buttonFileToJPN_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, JPN));
+            }
+        }
+
+        private void buttonFileToGBK_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, CHN));
+            }
+        }
+
+        private void buttonFileToUTF8_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
+            }
+        }
     }
 }

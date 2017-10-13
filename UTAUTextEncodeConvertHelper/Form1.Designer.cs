@@ -47,6 +47,10 @@
             this.buttonOpenPath = new System.Windows.Forms.Button();
             this.labelFoldPath = new System.Windows.Forms.Label();
             this.listBoxAfter = new System.Windows.Forms.ListBox();
+            this.listBoxBefore = new System.Windows.Forms.ListBox();
+            this.buttonFileToUTF8 = new System.Windows.Forms.Button();
+            this.buttonFileToGBK = new System.Windows.Forms.Button();
+            this.buttonFileToJPN = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -67,7 +71,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(755, 411);
+            this.tabControl1.Size = new System.Drawing.Size(755, 407);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageText
@@ -84,7 +88,7 @@
             this.tabPageText.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageText.Name = "tabPageText";
             this.tabPageText.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageText.Size = new System.Drawing.Size(747, 378);
+            this.tabPageText.Size = new System.Drawing.Size(747, 374);
             this.tabPageText.TabIndex = 0;
             this.tabPageText.Text = "文本";
             this.tabPageText.UseVisualStyleBackColor = true;
@@ -200,12 +204,16 @@
             // 
             // tabPageFile
             // 
+            this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
+            this.tabPageFile.Controls.Add(this.buttonFileToGBK);
+            this.tabPageFile.Controls.Add(this.buttonFileToJPN);
+            this.tabPageFile.Controls.Add(this.listBoxBefore);
             this.tabPageFile.Controls.Add(this.listBoxAfter);
             this.tabPageFile.Controls.Add(this.labelFoldPath);
             this.tabPageFile.Controls.Add(this.buttonOpenPath);
             this.tabPageFile.Location = new System.Drawing.Point(4, 29);
             this.tabPageFile.Name = "tabPageFile";
-            this.tabPageFile.Size = new System.Drawing.Size(747, 378);
+            this.tabPageFile.Size = new System.Drawing.Size(747, 374);
             this.tabPageFile.TabIndex = 1;
             this.tabPageFile.Text = "文件名";
             this.tabPageFile.UseVisualStyleBackColor = true;
@@ -242,6 +250,47 @@
             this.listBoxAfter.Name = "listBoxAfter";
             this.listBoxAfter.Size = new System.Drawing.Size(230, 164);
             this.listBoxAfter.TabIndex = 2;
+            // 
+            // listBoxBefore
+            // 
+            this.listBoxBefore.FormattingEnabled = true;
+            this.listBoxBefore.ItemHeight = 20;
+            this.listBoxBefore.Location = new System.Drawing.Point(494, 49);
+            this.listBoxBefore.Name = "listBoxBefore";
+            this.listBoxBefore.Size = new System.Drawing.Size(230, 164);
+            this.listBoxBefore.TabIndex = 3;
+            // 
+            // buttonFileToUTF8
+            // 
+            this.buttonFileToUTF8.Location = new System.Drawing.Point(253, 122);
+            this.buttonFileToUTF8.Name = "buttonFileToUTF8";
+            this.buttonFileToUTF8.Size = new System.Drawing.Size(235, 29);
+            this.buttonFileToUTF8.TabIndex = 20;
+            this.buttonFileToUTF8.Text = "转换到UTF-8";
+            this.buttonFileToUTF8.UseVisualStyleBackColor = true;
+            this.buttonFileToUTF8.Click += new System.EventHandler(this.buttonFileToUTF8_Click);
+            // 
+            // buttonFileToGBK
+            // 
+            this.buttonFileToGBK.Location = new System.Drawing.Point(253, 86);
+            this.buttonFileToGBK.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonFileToGBK.Name = "buttonFileToGBK";
+            this.buttonFileToGBK.Size = new System.Drawing.Size(235, 29);
+            this.buttonFileToGBK.TabIndex = 19;
+            this.buttonFileToGBK.Text = "转换到GB2312";
+            this.buttonFileToGBK.UseVisualStyleBackColor = true;
+            this.buttonFileToGBK.Click += new System.EventHandler(this.buttonFileToGBK_Click);
+            // 
+            // buttonFileToJPN
+            // 
+            this.buttonFileToJPN.Location = new System.Drawing.Point(253, 49);
+            this.buttonFileToJPN.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonFileToJPN.Name = "buttonFileToJPN";
+            this.buttonFileToJPN.Size = new System.Drawing.Size(235, 29);
+            this.buttonFileToJPN.TabIndex = 18;
+            this.buttonFileToJPN.Text = "转换到Shift_JIS";
+            this.buttonFileToJPN.UseVisualStyleBackColor = true;
+            this.buttonFileToJPN.Click += new System.EventHandler(this.buttonFileToJPN_Click);
             // 
             // Form1
             // 
@@ -284,6 +333,10 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label labelFoldPath;
         private System.Windows.Forms.ListBox listBoxAfter;
+        private System.Windows.Forms.Button buttonFileToUTF8;
+        private System.Windows.Forms.Button buttonFileToGBK;
+        private System.Windows.Forms.Button buttonFileToJPN;
+        private System.Windows.Forms.ListBox listBoxBefore;
     }
 }
 
