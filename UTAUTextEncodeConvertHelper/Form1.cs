@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -22,6 +16,7 @@ namespace UTAUTextEncodeConvertHelper
         Stream Streams;
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
+        Encoding myEncode;
 
         public Form1()
         {
@@ -135,34 +130,51 @@ namespace UTAUTextEncodeConvertHelper
                 {
                     listBoxAfter.Items.Add(file.Name);
                 }
+                buttonFileToGBK.Enabled = true;
+                buttonFileToJPN.Enabled = true;
+                buttonFileToUTF8.Enabled = true;
             }
         }
 
         private void buttonFileToJPN_Click(object sender, EventArgs e)
         {
+            listBoxBefore.Items.Clear();
             DirectoryInfo folder = new DirectoryInfo(foldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, JPN));
             }
+            myEncode = JPN;
+            buttonConvertOK.Enabled = true;
         }
 
         private void buttonFileToGBK_Click(object sender, EventArgs e)
         {
+            listBoxBefore.Items.Clear();
             DirectoryInfo folder = new DirectoryInfo(foldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, CHN));
             }
+            myEncode = CHN;
+            buttonConvertOK.Enabled = true;
         }
 
         private void buttonFileToUTF8_Click(object sender, EventArgs e)
         {
+            listBoxBefore.Items.Clear();
             DirectoryInfo folder = new DirectoryInfo(foldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
             }
+            myEncode = CHN;
+            buttonConvertOK.Enabled = true;
+        }
+
+        private void buttonConvertOK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

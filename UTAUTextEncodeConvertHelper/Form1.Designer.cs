@@ -41,16 +41,17 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonOpenPath = new System.Windows.Forms.Button();
-            this.labelFoldPath = new System.Windows.Forms.Label();
-            this.listBoxAfter = new System.Windows.Forms.ListBox();
-            this.listBoxBefore = new System.Windows.Forms.ListBox();
             this.buttonFileToUTF8 = new System.Windows.Forms.Button();
             this.buttonFileToGBK = new System.Windows.Forms.Button();
             this.buttonFileToJPN = new System.Windows.Forms.Button();
+            this.listBoxBefore = new System.Windows.Forms.ListBox();
+            this.listBoxAfter = new System.Windows.Forms.ListBox();
+            this.labelFoldPath = new System.Windows.Forms.Label();
+            this.buttonOpenPath = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.buttonConvertOK = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -204,6 +205,7 @@
             // 
             // tabPageFile
             // 
+            this.tabPageFile.Controls.Add(this.buttonConvertOK);
             this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
             this.tabPageFile.Controls.Add(this.buttonFileToGBK);
             this.tabPageFile.Controls.Add(this.buttonFileToJPN);
@@ -218,50 +220,9 @@
             this.tabPageFile.Text = "文件名";
             this.tabPageFile.UseVisualStyleBackColor = true;
             // 
-            // folderBrowserDialog
-            // 
-            this.folderBrowserDialog.Description = "请选择文件路径";
-            this.folderBrowserDialog.ShowNewFolderButton = false;
-            // 
-            // buttonOpenPath
-            // 
-            this.buttonOpenPath.Location = new System.Drawing.Point(16, 15);
-            this.buttonOpenPath.Name = "buttonOpenPath";
-            this.buttonOpenPath.Size = new System.Drawing.Size(125, 27);
-            this.buttonOpenPath.TabIndex = 0;
-            this.buttonOpenPath.Text = "打开文件夹";
-            this.buttonOpenPath.UseVisualStyleBackColor = true;
-            this.buttonOpenPath.Click += new System.EventHandler(this.buttonOpenPath_Click);
-            // 
-            // labelFoldPath
-            // 
-            this.labelFoldPath.AutoSize = true;
-            this.labelFoldPath.Location = new System.Drawing.Point(147, 18);
-            this.labelFoldPath.Name = "labelFoldPath";
-            this.labelFoldPath.Size = new System.Drawing.Size(99, 20);
-            this.labelFoldPath.TabIndex = 1;
-            this.labelFoldPath.Text = "文件夹路径：";
-            // 
-            // listBoxAfter
-            // 
-            this.listBoxAfter.FormattingEnabled = true;
-            this.listBoxAfter.ItemHeight = 20;
-            this.listBoxAfter.Location = new System.Drawing.Point(16, 49);
-            this.listBoxAfter.Name = "listBoxAfter";
-            this.listBoxAfter.Size = new System.Drawing.Size(230, 164);
-            this.listBoxAfter.TabIndex = 2;
-            // 
-            // listBoxBefore
-            // 
-            this.listBoxBefore.FormattingEnabled = true;
-            this.listBoxBefore.ItemHeight = 20;
-            this.listBoxBefore.Location = new System.Drawing.Point(494, 49);
-            this.listBoxBefore.Name = "listBoxBefore";
-            this.listBoxBefore.Size = new System.Drawing.Size(230, 164);
-            this.listBoxBefore.TabIndex = 3;
-            // 
             // buttonFileToUTF8
             // 
+            this.buttonFileToUTF8.Enabled = false;
             this.buttonFileToUTF8.Location = new System.Drawing.Point(253, 122);
             this.buttonFileToUTF8.Name = "buttonFileToUTF8";
             this.buttonFileToUTF8.Size = new System.Drawing.Size(235, 29);
@@ -272,6 +233,7 @@
             // 
             // buttonFileToGBK
             // 
+            this.buttonFileToGBK.Enabled = false;
             this.buttonFileToGBK.Location = new System.Drawing.Point(253, 86);
             this.buttonFileToGBK.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFileToGBK.Name = "buttonFileToGBK";
@@ -283,6 +245,7 @@
             // 
             // buttonFileToJPN
             // 
+            this.buttonFileToJPN.Enabled = false;
             this.buttonFileToJPN.Location = new System.Drawing.Point(253, 49);
             this.buttonFileToJPN.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFileToJPN.Name = "buttonFileToJPN";
@@ -291,6 +254,59 @@
             this.buttonFileToJPN.Text = "转换到Shift_JIS";
             this.buttonFileToJPN.UseVisualStyleBackColor = true;
             this.buttonFileToJPN.Click += new System.EventHandler(this.buttonFileToJPN_Click);
+            // 
+            // listBoxBefore
+            // 
+            this.listBoxBefore.FormattingEnabled = true;
+            this.listBoxBefore.ItemHeight = 20;
+            this.listBoxBefore.Location = new System.Drawing.Point(494, 49);
+            this.listBoxBefore.Name = "listBoxBefore";
+            this.listBoxBefore.Size = new System.Drawing.Size(230, 284);
+            this.listBoxBefore.TabIndex = 3;
+            // 
+            // listBoxAfter
+            // 
+            this.listBoxAfter.FormattingEnabled = true;
+            this.listBoxAfter.ItemHeight = 20;
+            this.listBoxAfter.Location = new System.Drawing.Point(16, 49);
+            this.listBoxAfter.Name = "listBoxAfter";
+            this.listBoxAfter.Size = new System.Drawing.Size(230, 284);
+            this.listBoxAfter.TabIndex = 2;
+            // 
+            // labelFoldPath
+            // 
+            this.labelFoldPath.AutoSize = true;
+            this.labelFoldPath.Location = new System.Drawing.Point(147, 18);
+            this.labelFoldPath.Name = "labelFoldPath";
+            this.labelFoldPath.Size = new System.Drawing.Size(99, 20);
+            this.labelFoldPath.TabIndex = 1;
+            this.labelFoldPath.Text = "文件夹路径：";
+            // 
+            // buttonOpenPath
+            // 
+            this.buttonOpenPath.Location = new System.Drawing.Point(16, 15);
+            this.buttonOpenPath.Name = "buttonOpenPath";
+            this.buttonOpenPath.Size = new System.Drawing.Size(125, 27);
+            this.buttonOpenPath.TabIndex = 0;
+            this.buttonOpenPath.Text = "打开文件夹";
+            this.buttonOpenPath.UseVisualStyleBackColor = true;
+            this.buttonOpenPath.Click += new System.EventHandler(this.buttonOpenPath_Click);
+            // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.Description = "请选择文件路径";
+            this.folderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // buttonConvertOK
+            // 
+            this.buttonConvertOK.Enabled = false;
+            this.buttonConvertOK.Location = new System.Drawing.Point(253, 304);
+            this.buttonConvertOK.Name = "buttonConvertOK";
+            this.buttonConvertOK.Size = new System.Drawing.Size(235, 29);
+            this.buttonConvertOK.TabIndex = 21;
+            this.buttonConvertOK.Text = "应用转换";
+            this.buttonConvertOK.UseVisualStyleBackColor = true;
+            this.buttonConvertOK.Click += new System.EventHandler(this.buttonConvertOK_Click);
             // 
             // Form1
             // 
@@ -337,6 +353,7 @@
         private System.Windows.Forms.Button buttonFileToGBK;
         private System.Windows.Forms.Button buttonFileToJPN;
         private System.Windows.Forms.ListBox listBoxBefore;
+        private System.Windows.Forms.Button buttonConvertOK;
     }
 }
 
