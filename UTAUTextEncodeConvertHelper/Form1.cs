@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.VisualBasic.Devices;
 
 namespace UTAUTextEncodeConvertHelper
 {
@@ -167,6 +168,8 @@ namespace UTAUTextEncodeConvertHelper
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
+                Computer MyComputer = new Computer();
+                Text = file.FullName;
             }
             myEncode = CHN;
             buttonConvertOK.Enabled = true;
@@ -174,7 +177,37 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
+            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                try
+                {
+                    if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
+                    {
+                        Computer MyComputer = new Computer();
+                        MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
+                    }
+                    else
+                    {
+                        MessageBox.Show("文件名未变换 已跳过 " + file.Name);
+                    }
+                }
+                catch(Exception exp)
+                {
+                    MessageBox.Show(exp.Message);
+                }
+            }
 
+            listBoxAfter.Items.Clear();
+            listBoxBefore.Items.Clear();
+
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxAfter.Items.Add(file.Name);
+            }
+            
+            buttonConvertOK.Enabled = false;
+            MessageBox.Show("转换完成！");
         }
     }
 }
