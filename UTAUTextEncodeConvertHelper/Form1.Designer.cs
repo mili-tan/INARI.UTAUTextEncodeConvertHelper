@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageText = new System.Windows.Forms.TabPage();
@@ -42,6 +43,8 @@
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
             this.tabPageFile = new System.Windows.Forms.TabPage();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.buttonConvertOK = new System.Windows.Forms.Button();
             this.buttonFileToUTF8 = new System.Windows.Forms.Button();
             this.buttonFileToGBK = new System.Windows.Forms.Button();
             this.buttonFileToJPN = new System.Windows.Forms.Button();
@@ -51,8 +54,6 @@
             this.buttonOpenPath = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonConvertOK = new System.Windows.Forms.Button();
-            this.listBoxLog = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -222,6 +223,26 @@
             this.tabPageFile.Text = "文件名";
             this.tabPageFile.UseVisualStyleBackColor = true;
             // 
+            // listBoxLog
+            // 
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.ItemHeight = 20;
+            this.listBoxLog.Location = new System.Drawing.Point(253, 158);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(235, 144);
+            this.listBoxLog.TabIndex = 22;
+            // 
+            // buttonConvertOK
+            // 
+            this.buttonConvertOK.Enabled = false;
+            this.buttonConvertOK.Location = new System.Drawing.Point(253, 304);
+            this.buttonConvertOK.Name = "buttonConvertOK";
+            this.buttonConvertOK.Size = new System.Drawing.Size(235, 29);
+            this.buttonConvertOK.TabIndex = 21;
+            this.buttonConvertOK.Text = "应用转换";
+            this.buttonConvertOK.UseVisualStyleBackColor = true;
+            this.buttonConvertOK.Click += new System.EventHandler(this.buttonConvertOK_Click);
+            // 
             // buttonFileToUTF8
             // 
             this.buttonFileToUTF8.Enabled = false;
@@ -299,32 +320,13 @@
             this.folderBrowserDialog.Description = "请选择文件路径";
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
-            // buttonConvertOK
-            // 
-            this.buttonConvertOK.Enabled = false;
-            this.buttonConvertOK.Location = new System.Drawing.Point(253, 304);
-            this.buttonConvertOK.Name = "buttonConvertOK";
-            this.buttonConvertOK.Size = new System.Drawing.Size(235, 29);
-            this.buttonConvertOK.TabIndex = 21;
-            this.buttonConvertOK.Text = "应用转换";
-            this.buttonConvertOK.UseVisualStyleBackColor = true;
-            this.buttonConvertOK.Click += new System.EventHandler(this.buttonConvertOK_Click);
-            // 
-            // listBoxLog
-            // 
-            this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.ItemHeight = 20;
-            this.listBoxLog.Location = new System.Drawing.Point(253, 158);
-            this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(235, 144);
-            this.listBoxLog.TabIndex = 22;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 426);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "UTAU Text Encode Convert Helper 0.52α";
