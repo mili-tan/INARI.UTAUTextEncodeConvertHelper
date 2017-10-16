@@ -52,6 +52,7 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.buttonConvertOK = new System.Windows.Forms.Button();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -205,6 +206,7 @@
             // 
             // tabPageFile
             // 
+            this.tabPageFile.Controls.Add(this.listBoxLog);
             this.tabPageFile.Controls.Add(this.buttonConvertOK);
             this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
             this.tabPageFile.Controls.Add(this.buttonFileToGBK);
@@ -308,6 +310,15 @@
             this.buttonConvertOK.UseVisualStyleBackColor = true;
             this.buttonConvertOK.Click += new System.EventHandler(this.buttonConvertOK_Click);
             // 
+            // listBoxLog
+            // 
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.ItemHeight = 20;
+            this.listBoxLog.Location = new System.Drawing.Point(253, 158);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(235, 144);
+            this.listBoxLog.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -354,6 +365,7 @@
         private System.Windows.Forms.Button buttonFileToJPN;
         private System.Windows.Forms.ListBox listBoxBefore;
         private System.Windows.Forms.Button buttonConvertOK;
+        private System.Windows.Forms.ListBox listBoxLog;
     }
 }
 

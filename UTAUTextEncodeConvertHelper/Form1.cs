@@ -177,6 +177,8 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
+            listBoxLog.Items.Add("[开始转换] ");
+            long startTime = DateTime.Now.ToBinary();
             DirectoryInfo folder = new DirectoryInfo(foldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
@@ -186,17 +188,21 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         Computer MyComputer = new Computer();
                         MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
+                        listBoxLog.Items.Add("[已转换] " + file.Name);
                     }
                     else
                     {
-                        MessageBox.Show("文件名未变换 已跳过 " + file.Name);
+                        listBoxLog.Items.Add("[已跳过] " + file.Name);
                     }
                 }
                 catch(Exception exp)
                 {
-                    MessageBox.Show(exp.Message);
+                    listBoxLog.Items.Add("[Warning]" + exp.Message);
                 }
             }
+
+            listBoxLog.Items.Add("[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
+            listBoxLog.Items.Add("[OK]转换完成");
 
             listBoxAfter.Items.Clear();
             listBoxBefore.Items.Clear();
@@ -207,7 +213,6 @@ namespace UTAUTextEncodeConvertHelper
             }
             
             buttonConvertOK.Enabled = false;
-            MessageBox.Show("转换完成！");
         }
     }
 }
