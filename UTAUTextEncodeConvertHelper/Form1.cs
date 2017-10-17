@@ -29,9 +29,11 @@ namespace UTAUTextEncodeConvertHelper
             InitializeComponent();
             if (!string.IsNullOrEmpty(ustPath))
             {
+                Text += " - 正作为UTAU插件运行";
                 buttonRead.Hide();
                 buttonSaveAs.Hide();
                 buttonSave.Text = "确定";
+
                 UtauPlugin = true;
                 richTextBoxAfter.Text = File.ReadAllText(ustPath, Encoding.Default);
                 FileName = ustPath;
@@ -92,16 +94,20 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/n/r"),Encoding.Default);
                     }
-                    MessageBox.Show("文件保存成功！");
+                    if (UtauPlugin)
+                    {
+                        Close();
+                        MessageBox.Show("转换完成！");
+                    }
+                    else
+                    {
+                        MessageBox.Show("文件保存成功！");
+                    }
                 }
             }
             catch(Exception ErrorMsg)
             {
                 MessageBox.Show(ErrorMsg + "\n\r\n\r保存文件失败。");
-            }
-            if (UtauPlugin)
-            {
-                Close();
             }
         }
 
@@ -127,6 +133,12 @@ namespace UTAUTextEncodeConvertHelper
         {
             MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            buttonOpenPath.Enabled = false;
+            if (UtauPlugin)
+            {
+                labelFoldPath.Text = "UTAU插件模式下不可用";
+                labelFoldPath.ForeColor = System.Drawing.Color.SlateGray;
+            }
         }
 
         private void buttonOpenPath_Click(object sender, EventArgs e)
