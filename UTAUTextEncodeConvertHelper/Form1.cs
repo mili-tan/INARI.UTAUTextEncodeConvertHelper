@@ -42,18 +42,21 @@ namespace UTAUTextEncodeConvertHelper
         {
             //richTextBoxBefore.Text = CHN.GetString(JPN.GetBytes(richTextBoxAfter.Text));
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, JPN);
+            myEncode = JPN;
         }
 
         private void buttonConvertToCHN_Click(object sender, EventArgs e)
         {
             //richTextBoxBefore.Text = JPN.GetString(CHN.GetBytes(richTextBoxAfter.Text));
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, CHN);
+            myEncode = CHN;
         }
 
         private void buttonConvertToUTF8_Click(object sender, EventArgs e)
         {
             //richTextBoxBefore.Text = Encoding.UTF8.GetString(CHN.GetBytes(richTextBoxAfter.Text));
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, Encoding.UTF8);
+            myEncode = Encoding.UTF8;
         }
 
         private void buttonRead_Click(object sender, EventArgs e)
@@ -81,7 +84,7 @@ namespace UTAUTextEncodeConvertHelper
                 }
                 else
                 {
-                    File.WriteAllText(FileName, richTextBoxBefore.Text);
+                    File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/r/n"));
                     MessageBox.Show("文件保存成功！");
                 }
             }
@@ -104,7 +107,7 @@ namespace UTAUTextEncodeConvertHelper
                 {
                     using (StreamWriter sWrite = new StreamWriter(Streams))
                     {
-                        sWrite.Write(richTextBoxBefore.Text);
+                        sWrite.Write(richTextBoxBefore.Text.Replace("/n", "/r/n"));
                     }
 
                     Streams.Close();
