@@ -84,7 +84,14 @@ namespace UTAUTextEncodeConvertHelper
                 }
                 else
                 {
-                    File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/r/n"));
+                    if (myEncode == JPN)
+                    {
+                        File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"),JPN);
+                    }
+                    else
+                    {
+                        File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/n/r"),Encoding.Default);
+                    }
                     MessageBox.Show("文件保存成功！");
                 }
             }
