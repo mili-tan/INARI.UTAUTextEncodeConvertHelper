@@ -133,9 +133,9 @@ namespace UTAUTextEncodeConvertHelper
         {
             MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            buttonOpenPath.Enabled = false;
             if (UtauPlugin)
             {
+                buttonOpenPath.Enabled = false;
                 labelFoldPath.Text = "UTAU插件模式下不可用";
                 labelFoldPath.ForeColor = System.Drawing.Color.SlateGray;
             }
@@ -215,6 +215,10 @@ namespace UTAUTextEncodeConvertHelper
                     else
                     {
                         listBoxLog.Items.Add("[已跳过] " + file.Name);
+                    }
+                    if (file.Name == "oto.ini")
+                    {
+                        MessageBox.Show("要转换oto.ini文件的文本编码吗？", "转换",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
                     }
                 }
                 catch(Exception exp)
