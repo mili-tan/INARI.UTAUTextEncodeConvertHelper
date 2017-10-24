@@ -216,22 +216,6 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         listBoxLog.Items.Add("[已跳过] " + file.Name);
                     }
-                    //if (file.Name == "oto.ini")
-                    //{
-                    //    if (MessageBox.Show("要转换oto.ini文件的文本编码吗？", "转换", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    //    {
-                    //        string myFileStr = File.ReadAllText(file.FullName, Encoding.Default);
-                    //        if (myEncode == JPN)
-                    //        {
-                    //            File.WriteAllText(file.Name, myFileStr, myEncode);
-                    //        }
-                    //        else
-                    //        {
-                    //            File.WriteAllText(file.Name, EncodeConvert.Converter(myFileStr, myEncode), Encoding.Default);
-                    //        }
-                    //        listBoxLog.Items.Add("[已转换] " + "oto.ini文本内容");
-                    //    }
-                    //}
                 }
                 catch (Exception exp)
                 {
