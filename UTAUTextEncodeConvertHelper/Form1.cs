@@ -110,17 +110,26 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonSaveAs_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = SafeFileName;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 if ((Streams = saveFileDialog.OpenFile()) != null)
                 {
                     using (StreamWriter sWrite = new StreamWriter(Streams))
                     {
-                        sWrite.Write(richTextBoxBefore.Text.Replace("/n", "/r/n"));
+                        SafeFileName = saveFileDialog.FileName.ToString();
+                        MessageBox.Show(SafeFileName);
+                        if (myEncode == JPN)
+                        {
+                            Streams.Close();
+                            File.WriteAllText(SafeFileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
+                        }
+                        else
+                        {
+                            sWrite.Write(richTextBoxBefore.Text.Replace("/n", "/r/n"),Encoding.Default);
+                            Streams.Close();
+                        }
+                        
                     }
-
-                    Streams.Close();
                     MessageBox.Show("另存为成功");
                 }
             }
