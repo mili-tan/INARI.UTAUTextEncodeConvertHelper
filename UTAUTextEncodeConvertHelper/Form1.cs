@@ -14,7 +14,6 @@ namespace UTAUTextEncodeConvertHelper
         string SafeFileName;
         string foldPath;
         bool UtauPlugin = false;
-        Stream Streams;
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
         Encoding myEncode;
@@ -64,8 +63,8 @@ namespace UTAUTextEncodeConvertHelper
             if (touchStone == DialogResult.OK)
             {
                 FileName = openFileDialog.FileName;
-                SafeFileName= openFileDialog.SafeFileName;
-                richTextBoxAfter.Text = File.ReadAllText(FileName,Encoding.Default);
+                SafeFileName = openFileDialog.SafeFileName;
+                richTextBoxAfter.Text = File.ReadAllText(FileName, Encoding.Default);
             }
         }
 
@@ -85,11 +84,11 @@ namespace UTAUTextEncodeConvertHelper
                 {
                     if (myEncode == JPN)
                     {
-                        File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"),JPN);
+                        File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
                     else
                     {
-                        File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/n/r"),Encoding.Default);
+                        File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/n/r"), Encoding.Default);
                     }
                     if (UtauPlugin)
                     {
@@ -102,7 +101,7 @@ namespace UTAUTextEncodeConvertHelper
                     }
                 }
             }
-            catch(Exception ErrorMsg)
+            catch (Exception ErrorMsg)
             {
                 MessageBox.Show(ErrorMsg + "\n\r\n\r保存文件失败。");
             }
@@ -112,28 +111,23 @@ namespace UTAUTextEncodeConvertHelper
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if ((Streams = saveFileDialog.OpenFile()) != null)
+                string fileNameSaveAs;
+                if ((fileNameSaveAs = saveFileDialog.FileName.ToString()) != null)
                 {
-                    using (StreamWriter sWrite = new StreamWriter(Streams))
+                    if (myEncode == JPN)
                     {
-                        SafeFileName = saveFileDialog.FileName.ToString();
-                        MessageBox.Show(SafeFileName);
-                        if (myEncode == JPN)
-                        {
-                            Streams.Close();
-                            File.WriteAllText(SafeFileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
-                        }
-                        else
-                        {
-                            sWrite.Write(richTextBoxBefore.Text.Replace("/n", "/r/n"),Encoding.Default);
-                            Streams.Close();
-                        }
-                        
+                        File.WriteAllText(fileNameSaveAs, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
-                    MessageBox.Show("另存为成功");
+                    else
+                    {
+                        File.WriteAllText(fileNameSaveAs, richTextBoxBefore.Text.Replace("/n", "/n/r"), Encoding.Default);
+                    }
+
                 }
+                MessageBox.Show("另存为成功");
             }
         }
+    
 
         private void Form1_Load(object sender, EventArgs e)
         {
