@@ -14,6 +14,7 @@ namespace UTAUTextEncodeConvertHelper
         string SafeFileName;
         string foldPath;
         bool UtauPlugin = false;
+        ToolTip toolTip= new ToolTip();
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
         Encoding myEncode;
@@ -122,7 +123,6 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         File.WriteAllText(fileNameSaveAs, richTextBoxBefore.Text.Replace("/n", "/n/r"), Encoding.Default);
                     }
-
                 }
                 MessageBox.Show("另存为成功");
             }
@@ -199,7 +199,7 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
-            listBoxLog.Items.Add("[开始转换] ");
+            listBoxLog.Items.Add("[开始转换] "  + DateTime.Now);
             long startTime = DateTime.Now.ToBinary();
             DirectoryInfo folder = new DirectoryInfo(foldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
@@ -235,6 +235,11 @@ namespace UTAUTextEncodeConvertHelper
             }
             
             buttonConvertOK.Enabled = false;
+        }
+
+        private void listBoxLog_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(listBoxLog, listBoxLog.SelectedItem.ToString());
         }
     }
 }

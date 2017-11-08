@@ -231,6 +231,7 @@
             this.listBoxLog.Name = "listBoxLog";
             this.listBoxLog.Size = new System.Drawing.Size(235, 144);
             this.listBoxLog.TabIndex = 22;
+            this.listBoxLog.SelectedIndexChanged += new System.EventHandler(this.listBoxLog_SelectedIndexChanged);
             // 
             // buttonConvertOK
             // 
