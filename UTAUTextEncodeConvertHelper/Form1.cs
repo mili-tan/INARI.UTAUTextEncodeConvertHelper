@@ -252,40 +252,47 @@ namespace UTAUTextEncodeConvertHelper
         {
             if (listBoxAfter.SelectedItem != null)
             {
-                try
+                if (myEncode == null)
                 {
-                    string myFileName = listBoxAfter.SelectedItem.ToString();
-                    if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
+                    MessageBox.Show("清先选择文件编码。");
+                }
+                else
+                {
+                    try
                     {
-                        if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                        string myFileName = listBoxAfter.SelectedItem.ToString();
+                        if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
                         {
-                            Computer MyComputer = new Computer();
-                            MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
-                            listBoxLog.Items.Add("[已转换] " + myFileName);
-                        }
-                        else
-                        {
-                            listBoxLog.Items.Add("[已跳过] " + myFileName);
+                            if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                            {
+                                Computer MyComputer = new Computer();
+                                MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
+                                listBoxLog.Items.Add("[已转换] " + myFileName);
+                            }
+                            else
+                            {
+                                listBoxLog.Items.Add("[已跳过] " + myFileName);
+                            }
                         }
                     }
+                    catch (Exception exp)
+                    {
+                        listBoxLog.Items.Add("[Warning]" + exp.Message);
+                    }
+                    listBoxAfter.Items.Clear();
+                    listBoxBefore.Items.Clear();
+
+                    foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                    {
+                        listBoxAfter.Items.Add(file.Name);
+                    }
+
+                    foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                    {
+                        listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
+                    }
                 }
-                catch (Exception exp)
-                {
-                    listBoxLog.Items.Add("[Warning]" + exp.Message);
-                }
 
-            }
-            listBoxAfter.Items.Clear();
-            listBoxBefore.Items.Clear();
-
-            foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
-            {
-                listBoxAfter.Items.Add(file.Name);
-            }
-
-            foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
-            {
-                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
             }
         }
     }
