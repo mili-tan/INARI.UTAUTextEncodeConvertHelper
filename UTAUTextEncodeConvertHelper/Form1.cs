@@ -191,7 +191,6 @@ namespace UTAUTextEncodeConvertHelper
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
                 Computer MyComputer = new Computer();
-                Text = file.FullName;
             }
             myEncode = CHN;
             buttonConvertOK.Enabled = true;
