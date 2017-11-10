@@ -14,7 +14,7 @@ namespace UTAUTextEncodeConvertHelper
         string SafeFileName;
         string foldPath;
         bool UtauPlugin = false;
-        ToolTip toolTip= new ToolTip();
+        ToolTip toolTip = new ToolTip();
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
         Encoding myEncode;
@@ -127,7 +127,7 @@ namespace UTAUTextEncodeConvertHelper
                 MessageBox.Show("另存为成功");
             }
         }
-    
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -198,42 +198,49 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
-            listBoxLog.Items.Add("[开始转换] "  + DateTime.Now);
-            long startTime = DateTime.Now.ToBinary();
-            DirectoryInfo folder = new DirectoryInfo(foldPath);
-            foreach (FileInfo file in folder.GetFiles("*.*"))
+            if (myEncode == null)
             {
-                try
+                MessageBox.Show("清先选择文件编码。");
+            }
+            else
+            {
+                listBoxLog.Items.Add("[开始转换] " + DateTime.Now);
+                long startTime = DateTime.Now.ToBinary();
+                DirectoryInfo folder = new DirectoryInfo(foldPath);
+                foreach (FileInfo file in folder.GetFiles("*.*"))
                 {
-                    if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
+                    try
                     {
-                        Computer MyComputer = new Computer();
-                        MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
-                        listBoxLog.Items.Add("[已转换] " + file.Name);
+                        if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
+                        {
+                            Computer MyComputer = new Computer();
+                            MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
+                            listBoxLog.Items.Add("[已转换] " + file.Name);
+                        }
+                        else
+                        {
+                            listBoxLog.Items.Add("[已跳过] " + file.Name);
+                        }
                     }
-                    else
+                    catch (Exception exp)
                     {
-                        listBoxLog.Items.Add("[已跳过] " + file.Name);
+                        listBoxLog.Items.Add("[Warning]" + exp.Message);
                     }
                 }
-                catch (Exception exp)
+
+                listBoxLog.Items.Add("[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
+                listBoxLog.Items.Add("[OK]转换完成");
+
+                listBoxAfter.Items.Clear();
+                listBoxBefore.Items.Clear();
+
+                foreach (FileInfo file in folder.GetFiles("*.*"))
                 {
-                    listBoxLog.Items.Add("[Warning]" + exp.Message);
+                    listBoxAfter.Items.Add(file.Name);
                 }
+
+                buttonConvertOK.Enabled = false;
             }
-
-            listBoxLog.Items.Add("[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
-            listBoxLog.Items.Add("[OK]转换完成");
-
-            listBoxAfter.Items.Clear();
-            listBoxBefore.Items.Clear();
-
-            foreach (FileInfo file in folder.GetFiles("*.*"))
-            {
-                listBoxAfter.Items.Add(file.Name);
-            }
-            
-            buttonConvertOK.Enabled = false;
         }
 
         private void listBoxLog_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,32 +252,40 @@ namespace UTAUTextEncodeConvertHelper
         {
             if (listBoxAfter.SelectedItem != null)
             {
-                string myFileName = listBoxAfter.SelectedItem.ToString();
-                if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
+                try
                 {
-                    if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                    string myFileName = listBoxAfter.SelectedItem.ToString();
+                    if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
                     {
-                        Computer MyComputer = new Computer();
-                        MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
-                        listBoxLog.Items.Add("[已转换] " + myFileName);
+                        if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                        {
+                            Computer MyComputer = new Computer();
+                            MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
+                            listBoxLog.Items.Add("[已转换] " + myFileName);
+                        }
+                        else
+                        {
+                            listBoxLog.Items.Add("[已跳过] " + myFileName);
+                        }
                     }
-                    else
-                    {
-                        listBoxLog.Items.Add("[已跳过] " + myFileName);
-                    }
                 }
-                listBoxAfter.Items.Clear();
-                listBoxBefore.Items.Clear();
-
-                foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                catch (Exception exp)
                 {
-                    listBoxAfter.Items.Add(file.Name);
+                    listBoxLog.Items.Add("[Warning]" + exp.Message);
                 }
 
-                foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
-                {
-                    listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
-                }
+            }
+            listBoxAfter.Items.Clear();
+            listBoxBefore.Items.Clear();
+
+            foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+            {
+                listBoxAfter.Items.Add(file.Name);
+            }
+
+            foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+            {
+                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
             }
         }
     }
