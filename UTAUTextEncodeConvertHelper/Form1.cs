@@ -205,7 +205,6 @@ namespace UTAUTextEncodeConvertHelper
             {
                 try
                 {
-                    MessageBox.Show(file.FullName);
                     if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
                     {
                         Computer MyComputer = new Computer();
@@ -266,6 +265,11 @@ namespace UTAUTextEncodeConvertHelper
                 foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
                 {
                     listBoxAfter.Items.Add(file.Name);
+                }
+
+                foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                {
+                    listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
                 }
             }
         }
