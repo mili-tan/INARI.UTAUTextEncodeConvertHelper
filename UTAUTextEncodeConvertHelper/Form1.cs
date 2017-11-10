@@ -205,6 +205,7 @@ namespace UTAUTextEncodeConvertHelper
             {
                 try
                 {
+                    MessageBox.Show(file.FullName);
                     if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
                     {
                         Computer MyComputer = new Computer();
@@ -239,6 +240,34 @@ namespace UTAUTextEncodeConvertHelper
         private void listBoxLog_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolTip.SetToolTip(listBoxLog, listBoxLog.SelectedItem.ToString());
+        }
+
+        private void listBoxAfter_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxAfter.SelectedItem != null)
+            {
+                string myFileName = listBoxAfter.SelectedItem.ToString();
+                if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
+                {
+                    if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                    {
+                        Computer MyComputer = new Computer();
+                        MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
+                        listBoxLog.Items.Add("[已转换] " + myFileName);
+                    }
+                    else
+                    {
+                        listBoxLog.Items.Add("[已跳过] " + myFileName);
+                    }
+                }
+                listBoxAfter.Items.Clear();
+                listBoxBefore.Items.Clear();
+
+                foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                {
+                    listBoxAfter.Items.Add(file.Name);
+                }
+            }
         }
     }
 }

@@ -296,6 +296,7 @@
             this.listBoxAfter.Name = "listBoxAfter";
             this.listBoxAfter.Size = new System.Drawing.Size(230, 284);
             this.listBoxAfter.TabIndex = 2;
+            this.listBoxAfter.DoubleClick += new System.EventHandler(this.listBoxAfter_DoubleClick);
             // 
             // labelFoldPath
             // 
