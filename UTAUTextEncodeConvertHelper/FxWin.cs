@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace UTAURtLibHelper
+namespace UTAUTextEncodeConvertHelper
 {
-    class FxWin
+    class Fx
     {
         [DllImport("user32.dll", EntryPoint = "AnimateWindow")]
         public static extern bool EffectsWindows(IntPtr handle, int effectsTime, int effectsFlags);

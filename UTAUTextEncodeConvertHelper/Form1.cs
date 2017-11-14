@@ -139,6 +139,7 @@ namespace UTAUTextEncodeConvertHelper
                 labelFoldPath.Text = "UTAU插件模式下不可用";
                 labelFoldPath.ForeColor = System.Drawing.Color.SlateGray;
             }
+            //Fx.EffectsWindows(Handle, 500, Fx.AW_BLEND);
         }
 
         private void buttonOpenPath_Click(object sender, EventArgs e)
@@ -294,6 +295,11 @@ namespace UTAUTextEncodeConvertHelper
                 }
 
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Fx.EffectsWindows(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
         }
     }
 }
