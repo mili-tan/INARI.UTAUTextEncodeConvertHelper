@@ -199,54 +199,8 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
-            if (myEncode == null)
-            {
-                MessageBox.Show("清先选择文件编码。");
-            }
-            else
-            {
-                listBoxLog.Items.Add("[开始转换] " + DateTime.Now);
-                long startTime = DateTime.Now.ToBinary();
-                DirectoryInfo folder = new DirectoryInfo(foldPath);
-                foreach (FileInfo file in folder.GetFiles("*.*"))
-                {
-                    try
-                    {
-                        if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
-                        {
-                            Computer MyComputer = new Computer();
-                            MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
-                            listBoxLog.Items.Add("[已转换] " + file.Name);
-                        }
-                        else
-                        {
-                            listBoxLog.Items.Add("[已跳过] " + file.Name);
-                        }
-                    }
-                    catch (Exception exp)
-                    {
-                        listBoxLog.Items.Add("[Warning]" + exp.Message);
-                    }
-                }
-
-                listBoxLog.Items.Add("[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
-                listBoxLog.Items.Add("[OK]转换完成");
-
-                listBoxAfter.Items.Clear();
-                listBoxBefore.Items.Clear();
-
-                foreach (FileInfo file in folder.GetFiles("*.*"))
-                {
-                    listBoxAfter.Items.Add(file.Name);
-                }
-
-                buttonConvertOK.Enabled = false;
-            }
-        }
-
-        private void listBoxLog_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(listBoxLog, listBoxLog.SelectedItem.ToString());
+            backgroundWorker.RunWorkerAsync();
+            this.Enabled = false;
         }
 
         private void listBoxAfter_DoubleClick(object sender, EventArgs e)
@@ -268,17 +222,16 @@ namespace UTAUTextEncodeConvertHelper
                             {
                                 Computer MyComputer = new Computer();
                                 MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
-                                listBoxLog.Items.Add("[已转换] " + myFileName);
                             }
                             else
                             {
-                                listBoxLog.Items.Add("[已跳过] " + myFileName);
+                                MessageBox.Show("[已跳过] " + myFileName);
                             }
                         }
                     }
                     catch (Exception exp)
                     {
-                        listBoxLog.Items.Add("[Warning]" + exp.Message);
+                        MessageBox.Show("[Warning]" + exp.Message);
                     }
                     listBoxAfter.Items.Clear();
                     listBoxBefore.Items.Clear();
@@ -300,6 +253,53 @@ namespace UTAUTextEncodeConvertHelper
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Fx.EffectsWindows(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
+        }
+
+        private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (myEncode == null)
+            {
+                MessageBox.Show("清先选择文件编码。");
+            }
+            else
+            {
+                long startTime = DateTime.Now.ToBinary();
+                DirectoryInfo folder = new DirectoryInfo(foldPath);
+                foreach (FileInfo file in folder.GetFiles("*.*"))
+                {
+                    try
+                    {
+                        if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
+                        {
+                            Computer MyComputer = new Computer();
+                            MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
+                        }
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show("[Warning]" + exp.Message);
+                    }
+                }
+
+                MessageBox.Show("[OK]转换完成 \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
+
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            DirectoryInfo folder = new DirectoryInfo(foldPath);
+
+            listBoxAfter.Items.Clear();
+            listBoxBefore.Items.Clear();
+
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxAfter.Items.Add(file.Name);
+            }
+
+            this.Enabled = true;
+            buttonConvertOK.Enabled = false;
         }
     }
 }
