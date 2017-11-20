@@ -54,6 +54,7 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -207,6 +208,7 @@
             // 
             // tabPageFile
             // 
+            this.tabPageFile.Controls.Add(this.progressBar);
             this.tabPageFile.Controls.Add(this.buttonConvertOK);
             this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
             this.tabPageFile.Controls.Add(this.buttonFileToGBK);
@@ -314,7 +316,15 @@
             // backgroundWorker
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(253, 275);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(235, 23);
+            this.progressBar.TabIndex = 22;
             // 
             // Form1
             // 
@@ -366,6 +376,7 @@
         private System.Windows.Forms.ListBox listBoxBefore;
         private System.Windows.Forms.Button buttonConvertOK;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

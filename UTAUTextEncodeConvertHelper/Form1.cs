@@ -18,6 +18,7 @@ namespace UTAUTextEncodeConvertHelper
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
         Encoding myEncode;
+        int proIn = 0;
 
         public Form1()
         {
@@ -139,6 +140,9 @@ namespace UTAUTextEncodeConvertHelper
                 labelFoldPath.Text = "UTAU插件模式下不可用";
                 labelFoldPath.ForeColor = System.Drawing.Color.SlateGray;
             }
+
+            backgroundWorker.WorkerReportsProgress = true;
+            backgroundWorker.WorkerSupportsCancellation = true;
             //Fx.EffectsWindows(Handle, 500, Fx.AW_BLEND);
         }
 
@@ -199,8 +203,8 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
+            progressBar.Maximum = new DirectoryInfo(foldPath).GetFiles().Length;
             backgroundWorker.RunWorkerAsync();
-            this.Enabled = false;
         }
 
         private void listBoxAfter_DoubleClick(object sender, EventArgs e)
@@ -257,6 +261,7 @@ namespace UTAUTextEncodeConvertHelper
 
         private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            int i = 1;
             if (myEncode == null)
             {
                 MessageBox.Show("清先选择文件编码。");
@@ -279,6 +284,7 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         MessageBox.Show("[Warning]" + exp.Message);
                     }
+                    backgroundWorker.ReportProgress(i++);
                 }
 
                 MessageBox.Show("[OK]转换完成 \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
@@ -298,8 +304,13 @@ namespace UTAUTextEncodeConvertHelper
                 listBoxAfter.Items.Add(file.Name);
             }
 
-            this.Enabled = true;
             buttonConvertOK.Enabled = false;
+            progressBar.Value = 0;
+        }
+
+        private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
         }
     }
 }
