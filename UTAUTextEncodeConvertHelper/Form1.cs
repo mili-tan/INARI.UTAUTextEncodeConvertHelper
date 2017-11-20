@@ -18,7 +18,6 @@ namespace UTAUTextEncodeConvertHelper
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
         Encoding myEncode;
-        int proIn = 0;
 
         public Form1()
         {
@@ -204,6 +203,7 @@ namespace UTAUTextEncodeConvertHelper
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
             progressBar.Maximum = new DirectoryInfo(foldPath).GetFiles().Length;
+            progressBar.Visible = true;
             backgroundWorker.RunWorkerAsync();
         }
 
@@ -306,6 +306,7 @@ namespace UTAUTextEncodeConvertHelper
 
             buttonConvertOK.Enabled = false;
             progressBar.Value = 0;
+            progressBar.Visible = false;
         }
 
         private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
