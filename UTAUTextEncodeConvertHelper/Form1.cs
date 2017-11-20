@@ -13,6 +13,7 @@ namespace UTAUTextEncodeConvertHelper
         string FileName;
         string SafeFileName;
         string foldPath;
+        string MyMsg = "";
         bool UtauPlugin = false;
         ToolTip toolTip = new ToolTip();
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
@@ -282,18 +283,20 @@ namespace UTAUTextEncodeConvertHelper
                     }
                     catch (Exception exp)
                     {
-                        MessageBox.Show("[Warning]" + exp.Message);
+                        MyMsg += "[Warning]" + exp.Message + "\n\r";
                     }
                     backgroundWorker.ReportProgress(i++);
                 }
 
-                MessageBox.Show("[OK]转换完成 \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString());
+                MessageBox.Show("[OK]转换完成 \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString() + "\n\r" + MyMsg);
 
             }
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            MyMsg = "";
+
             DirectoryInfo folder = new DirectoryInfo(foldPath);
 
             listBoxAfter.Items.Clear();
