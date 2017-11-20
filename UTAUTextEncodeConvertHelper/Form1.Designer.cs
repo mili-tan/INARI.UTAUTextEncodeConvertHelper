@@ -43,7 +43,7 @@
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.buttonConvertOK = new System.Windows.Forms.Button();
             this.buttonFileToUTF8 = new System.Windows.Forms.Button();
             this.buttonFileToGBK = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@
             this.buttonOpenPath = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPageText.SuspendLayout();
             this.groupBoxBefore.SuspendLayout();
@@ -207,7 +208,7 @@
             // 
             // tabPageFile
             // 
-            this.tabPageFile.Controls.Add(this.listBoxLog);
+            this.tabPageFile.Controls.Add(this.progressBar);
             this.tabPageFile.Controls.Add(this.buttonConvertOK);
             this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
             this.tabPageFile.Controls.Add(this.buttonFileToGBK);
@@ -223,15 +224,13 @@
             this.tabPageFile.Text = "文件名";
             this.tabPageFile.UseVisualStyleBackColor = true;
             // 
-            // listBoxLog
+            // progressBar
             // 
-            this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.ItemHeight = 20;
-            this.listBoxLog.Location = new System.Drawing.Point(253, 158);
-            this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(235, 144);
-            this.listBoxLog.TabIndex = 22;
-            this.listBoxLog.SelectedIndexChanged += new System.EventHandler(this.listBoxLog_SelectedIndexChanged);
+            this.progressBar.Location = new System.Drawing.Point(253, 275);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(235, 23);
+            this.progressBar.TabIndex = 22;
+            this.progressBar.Visible = false;
             // 
             // buttonConvertOK
             // 
@@ -322,6 +321,12 @@
             this.folderBrowserDialog.Description = "请选择文件路径";
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -371,7 +376,8 @@
         private System.Windows.Forms.Button buttonFileToJPN;
         private System.Windows.Forms.ListBox listBoxBefore;
         private System.Windows.Forms.Button buttonConvertOK;
-        private System.Windows.Forms.ListBox listBoxLog;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
