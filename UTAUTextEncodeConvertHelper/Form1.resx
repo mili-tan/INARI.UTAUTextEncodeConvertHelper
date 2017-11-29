@@ -120,16 +120,621 @@
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonConvertToUTF8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 100</value>
+  </data>
+  <data name="buttonConvertToUTF8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonConvertToUTF8.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="buttonConvertToUTF8.Text" xml:space="preserve">
+    <value>转换到UTF-8</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToUTF8.Name" xml:space="preserve">
+    <value>buttonConvertToUTF8</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToUTF8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToUTF8.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToUTF8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonSaveAs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 173</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonSaveAs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="buttonSaveAs.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="buttonSaveAs.Text" xml:space="preserve">
+    <value>另存为转换后内容</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAs.Name" xml:space="preserve">
+    <value>buttonSaveAs</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAs.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAs.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="richTextBoxBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 25</value>
+  </data>
+  <data name="richTextBoxBefore.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="richTextBoxBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 330</value>
+  </data>
+  <data name="richTextBoxBefore.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="richTextBoxBefore.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;richTextBoxBefore.Name" xml:space="preserve">
+    <value>richTextBoxBefore</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxBefore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxBefore.Parent" xml:space="preserve">
+    <value>groupBoxBefore</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxBefore.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>467, 9</value>
+  </data>
+  <data name="groupBoxBefore.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBoxBefore.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBoxBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 362</value>
+  </data>
+  <data name="groupBoxBefore.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="groupBoxBefore.Text" xml:space="preserve">
+    <value>转换后</value>
+  </data>
+  <data name="&gt;&gt;groupBoxBefore.Name" xml:space="preserve">
+    <value>groupBoxBefore</value>
+  </data>
+  <data name="&gt;&gt;groupBoxBefore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxBefore.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;groupBoxBefore.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="richTextBoxAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 25</value>
+  </data>
+  <data name="richTextBoxAfter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="richTextBoxAfter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 330</value>
+  </data>
+  <data name="richTextBoxAfter.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="richTextBoxAfter.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;richTextBoxAfter.Name" xml:space="preserve">
+    <value>richTextBoxAfter</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxAfter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxAfter.Parent" xml:space="preserve">
+    <value>groupBoxAfter</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxAfter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="groupBoxAfter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBoxAfter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBoxAfter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 362</value>
+  </data>
+  <data name="groupBoxAfter.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="groupBoxAfter.Text" xml:space="preserve">
+    <value>转换前</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAfter.Name" xml:space="preserve">
+    <value>groupBoxAfter</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAfter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAfter.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAfter.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonConvertToCHN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 64</value>
+  </data>
+  <data name="buttonConvertToCHN.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonConvertToCHN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="buttonConvertToCHN.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="buttonConvertToCHN.Text" xml:space="preserve">
+    <value>转换到GB2312</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToCHN.Name" xml:space="preserve">
+    <value>buttonConvertToCHN</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToCHN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToCHN.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToCHN.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 137</value>
+  </data>
+  <data name="buttonSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="buttonSave.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>保存转换后内容</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Name" xml:space="preserve">
+    <value>buttonSave</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonConvertToJPN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 27</value>
+  </data>
+  <data name="buttonConvertToJPN.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonConvertToJPN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="buttonConvertToJPN.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonConvertToJPN.Text" xml:space="preserve">
+    <value>转换到Shift_JIS</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToJPN.Name" xml:space="preserve">
+    <value>buttonConvertToJPN</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToJPN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToJPN.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertToJPN.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonRead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 210</value>
+  </data>
+  <data name="buttonRead.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonRead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="buttonRead.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonRead.Text" xml:space="preserve">
+    <value>读取文件</value>
+  </data>
+  <data name="&gt;&gt;buttonRead.Name" xml:space="preserve">
+    <value>buttonRead</value>
+  </data>
+  <data name="&gt;&gt;buttonRead.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRead.Parent" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;buttonRead.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabPageText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tabPageText.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tabPageText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>747, 374</value>
+  </data>
+  <data name="tabPageText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageText.Text" xml:space="preserve">
+    <value>文本</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Name" xml:space="preserve">
+    <value>tabPageText</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 275</value>
+  </data>
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 23</value>
+  </data>
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="progressBar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonConvertOK.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonConvertOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 304</value>
+  </data>
+  <data name="buttonConvertOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 29</value>
+  </data>
+  <data name="buttonConvertOK.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="buttonConvertOK.Text" xml:space="preserve">
+    <value>应用转换</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertOK.Name" xml:space="preserve">
+    <value>buttonConvertOK</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertOK.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;buttonConvertOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonFileToUTF8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonFileToUTF8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 122</value>
+  </data>
+  <data name="buttonFileToUTF8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 29</value>
+  </data>
+  <data name="buttonFileToUTF8.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="buttonFileToUTF8.Text" xml:space="preserve">
+    <value>转换到UTF-8</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToUTF8.Name" xml:space="preserve">
+    <value>buttonFileToUTF8</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToUTF8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToUTF8.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToUTF8.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonFileToGBK.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonFileToGBK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 86</value>
+  </data>
+  <data name="buttonFileToGBK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonFileToGBK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 29</value>
+  </data>
+  <data name="buttonFileToGBK.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="buttonFileToGBK.Text" xml:space="preserve">
+    <value>转换到GB2312</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToGBK.Name" xml:space="preserve">
+    <value>buttonFileToGBK</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToGBK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToGBK.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToGBK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonFileToJPN.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonFileToJPN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 49</value>
+  </data>
+  <data name="buttonFileToJPN.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="buttonFileToJPN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 29</value>
+  </data>
+  <data name="buttonFileToJPN.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="buttonFileToJPN.Text" xml:space="preserve">
+    <value>转换到Shift_JIS</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToJPN.Name" xml:space="preserve">
+    <value>buttonFileToJPN</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToJPN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToJPN.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;buttonFileToJPN.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="listBoxBefore.ItemHeight" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="listBoxBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>494, 49</value>
+  </data>
+  <data name="listBoxBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 284</value>
+  </data>
+  <data name="listBoxBefore.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;listBoxBefore.Name" xml:space="preserve">
+    <value>listBoxBefore</value>
+  </data>
+  <data name="&gt;&gt;listBoxBefore.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxBefore.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;listBoxBefore.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="listBoxAfter.ItemHeight" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="listBoxAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 49</value>
+  </data>
+  <data name="listBoxAfter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 284</value>
+  </data>
+  <data name="listBoxAfter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;listBoxAfter.Name" xml:space="preserve">
+    <value>listBoxAfter</value>
+  </data>
+  <data name="&gt;&gt;listBoxAfter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxAfter.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;listBoxAfter.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelFoldPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFoldPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 18</value>
+  </data>
+  <data name="labelFoldPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 20</value>
+  </data>
+  <data name="labelFoldPath.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelFoldPath.Text" xml:space="preserve">
+    <value>文件夹路径：</value>
+  </data>
+  <data name="&gt;&gt;labelFoldPath.Name" xml:space="preserve">
+    <value>labelFoldPath</value>
+  </data>
+  <data name="&gt;&gt;labelFoldPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFoldPath.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;labelFoldPath.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonOpenPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 15</value>
+  </data>
+  <data name="buttonOpenPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="buttonOpenPath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonOpenPath.Text" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenPath.Name" xml:space="preserve">
+    <value>buttonOpenPath</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenPath.Parent" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenPath.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tabPageFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabPageFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>747, 374</value>
+  </data>
+  <data name="tabPageFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageFile.Text" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="&gt;&gt;tabPageFile.Name" xml:space="preserve">
+    <value>tabPageFile</value>
+  </data>
+  <data name="&gt;&gt;tabPageFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFile.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageFile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 6</value>
+  </data>
+  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 407</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>194, 17</value>
   </metadata>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>356, 17</value>
   </metadata>
+  <data name="folderBrowserDialog.Description" xml:space="preserve">
+    <value>请选择文件路径</value>
+  </data>
   <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>564, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>785, 426</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AICAQAAEABADoAgAA1gAAABAQEAABAAQAKAEAAL4DAAAwMAAAAQAIAKgOAADmBAAAICAAAAEA
@@ -1325,5 +1930,44 @@
         VFRUCQAAAAAAAAAAAAAAAAAAAAAAAAAA+B8AAOAHAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAACAAQAAgAEAAMADAADgBwAA+B8AAA==
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>UTAU TextEncode Convert Helper 1.21</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
+    <value>openFileDialog</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog.Name" xml:space="preserve">
+    <value>saveFileDialog</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
+    <value>folderBrowserDialog</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker.Name" xml:space="preserve">
+    <value>backgroundWorker</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
