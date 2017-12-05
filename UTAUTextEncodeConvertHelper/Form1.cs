@@ -12,13 +12,13 @@ namespace UTAUTextEncodeConvertHelper
 
         string FileName;
         string SafeFileName;
-        string foldPath;
+        string FoldPath;
         string MyMsg = "";
         bool UtauPlugin = false;
-        ToolTip toolTip = new ToolTip();
+        ToolTip ToolTip = new ToolTip();
         Encoding JPN = Encoding.GetEncoding("Shift_JIS");
         Encoding CHN = Encoding.GetEncoding("gb2312");
-        Encoding myEncode;
+        Encoding MyEncode;
 
         public Form1()
         {
@@ -44,19 +44,19 @@ namespace UTAUTextEncodeConvertHelper
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
         {
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, JPN);
-            myEncode = JPN;
+            MyEncode = JPN;
         }
 
         private void buttonConvertToCHN_Click(object sender, EventArgs e)
         {
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, CHN);
-            myEncode = CHN;
+            MyEncode = CHN;
         }
 
         private void buttonConvertToUTF8_Click(object sender, EventArgs e)
         {
             richTextBoxBefore.Text = EncodeConvert.Converter(richTextBoxAfter.Text, Encoding.UTF8);
-            myEncode = Encoding.UTF8;
+            MyEncode = Encoding.UTF8;
         }
 
         private void buttonRead_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace UTAUTextEncodeConvertHelper
                 }
                 else
                 {
-                    if (myEncode == JPN)
+                    if (MyEncode == JPN)
                     {
                         File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
@@ -116,7 +116,7 @@ namespace UTAUTextEncodeConvertHelper
                 string fileNameSaveAs;
                 if ((fileNameSaveAs = saveFileDialog.FileName.ToString()) != null)
                 {
-                    if (myEncode == JPN)
+                    if (MyEncode == JPN)
                     {
                         File.WriteAllText(fileNameSaveAs, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
@@ -143,16 +143,15 @@ namespace UTAUTextEncodeConvertHelper
 
             backgroundWorker.WorkerReportsProgress = true;
             backgroundWorker.WorkerSupportsCancellation = true;
-            //Fx.EffectsWindows(Handle, 500, Fx.AW_BLEND);
         }
 
         private void buttonOpenPath_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                foldPath = folderBrowserDialog.SelectedPath;
-                DirectoryInfo folder = new DirectoryInfo(foldPath);
-                labelFoldPath.Text = "文件夹路径：" + foldPath;
+                FoldPath = folderBrowserDialog.SelectedPath;
+                DirectoryInfo folder = new DirectoryInfo(FoldPath);
+                labelFoldPath.Text = "文件夹路径：" + FoldPath;
                 listBoxAfter.Items.Clear();
                 foreach (FileInfo file in folder.GetFiles("*.*"))
                 {
@@ -167,43 +166,43 @@ namespace UTAUTextEncodeConvertHelper
         private void buttonFileToJPN_Click(object sender, EventArgs e)
         {
             listBoxBefore.Items.Clear();
-            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            DirectoryInfo folder = new DirectoryInfo(FoldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, JPN));
             }
-            myEncode = JPN;
+            MyEncode = JPN;
             buttonConvertOK.Enabled = true;
         }
 
         private void buttonFileToGBK_Click(object sender, EventArgs e)
         {
             listBoxBefore.Items.Clear();
-            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            DirectoryInfo folder = new DirectoryInfo(FoldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, CHN));
             }
-            myEncode = CHN;
+            MyEncode = CHN;
             buttonConvertOK.Enabled = true;
         }
 
         private void buttonFileToUTF8_Click(object sender, EventArgs e)
         {
             listBoxBefore.Items.Clear();
-            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            DirectoryInfo folder = new DirectoryInfo(FoldPath);
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
                 Computer MyComputer = new Computer();
             }
-            myEncode = CHN;
+            MyEncode = CHN;
             buttonConvertOK.Enabled = true;
         }
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
-            progressBar.Maximum = new DirectoryInfo(foldPath).GetFiles().Length;
+            progressBar.Maximum = new DirectoryInfo(FoldPath).GetFiles().Length;
             progressBar.Visible = true;
             backgroundWorker.RunWorkerAsync();
         }
@@ -212,7 +211,7 @@ namespace UTAUTextEncodeConvertHelper
         {
             if (listBoxAfter.SelectedItem != null)
             {
-                if (myEncode == null)
+                if (MyEncode == null)
                 {
                     MessageBox.Show("清先选择文件编码。");
                 }
@@ -223,10 +222,10 @@ namespace UTAUTextEncodeConvertHelper
                         string myFileName = listBoxAfter.SelectedItem.ToString();
                         if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
                         {
-                            if (myFileName != EncodeConvert.Converter(myFileName, myEncode))
+                            if (myFileName != EncodeConvert.Converter(myFileName, MyEncode))
                             {
                                 Computer MyComputer = new Computer();
-                                MyComputer.FileSystem.RenameFile(foldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, myEncode));
+                                MyComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, MyEncode));
                             }
                             else
                             {
@@ -241,14 +240,14 @@ namespace UTAUTextEncodeConvertHelper
                     listBoxAfter.Items.Clear();
                     listBoxBefore.Items.Clear();
 
-                    foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                    foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
                     {
                         listBoxAfter.Items.Add(file.Name);
                     }
 
-                    foreach (FileInfo file in new DirectoryInfo(foldPath).GetFiles("*.*"))
+                    foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
                     {
-                        listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, myEncode));
+                        listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, MyEncode));
                     }
                 }
 
@@ -263,22 +262,22 @@ namespace UTAUTextEncodeConvertHelper
         private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             int i = 1;
-            if (myEncode == null)
+            if (MyEncode == null)
             {
                 MessageBox.Show("清先选择文件编码。");
             }
             else
             {
                 long startTime = DateTime.Now.ToBinary();
-                DirectoryInfo folder = new DirectoryInfo(foldPath);
+                DirectoryInfo folder = new DirectoryInfo(FoldPath);
                 foreach (FileInfo file in folder.GetFiles("*.*"))
                 {
                     try
                     {
-                        if (file.Name != EncodeConvert.Converter(file.Name, myEncode))
+                        if (file.Name != EncodeConvert.Converter(file.Name, MyEncode))
                         {
                             Computer MyComputer = new Computer();
-                            MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, myEncode));
+                            MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, MyEncode));
                         }
                     }
                     catch (Exception exp)
@@ -297,7 +296,7 @@ namespace UTAUTextEncodeConvertHelper
         {
             MyMsg = "";
 
-            DirectoryInfo folder = new DirectoryInfo(foldPath);
+            DirectoryInfo folder = new DirectoryInfo(FoldPath);
 
             listBoxAfter.Items.Clear();
             listBoxBefore.Items.Clear();
