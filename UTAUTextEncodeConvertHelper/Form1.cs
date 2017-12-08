@@ -61,6 +61,8 @@ namespace UTAUTextEncodeConvertHelper
 
         private void buttonRead_Click(object sender, EventArgs e)
         {
+            richTextBoxAfter.Clear();
+            richTextBoxBefore.Clear();
             DialogResult touchStone = openFileDialog.ShowDialog();
             if (touchStone == DialogResult.OK)
             {
@@ -101,6 +103,8 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         MessageBox.Show("文件保存成功！");
                     }
+                    richTextBoxAfter.Clear();
+                    richTextBoxBefore.Clear();
                 }
             }
             catch (Exception ErrorMsg)
@@ -126,6 +130,8 @@ namespace UTAUTextEncodeConvertHelper
                     }
                 }
                 MessageBox.Show("另存为成功");
+                richTextBoxAfter.Clear();
+                richTextBoxBefore.Clear();
             }
         }
 
@@ -160,6 +166,8 @@ namespace UTAUTextEncodeConvertHelper
                 buttonFileToGBK.Enabled = true;
                 buttonFileToJPN.Enabled = true;
                 buttonFileToUTF8.Enabled = true;
+
+                openFileDialog.InitialDirectory = FoldPath;
             }
         }
 
