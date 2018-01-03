@@ -26,6 +26,10 @@ namespace UTAUTextEncodeConvertHelper
         {
             InitializeComponent();
             Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
+            //var materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
         }
 
         public Form1(string ustPath)
