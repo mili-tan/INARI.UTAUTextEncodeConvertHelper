@@ -3,11 +3,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.Devices;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace UTAUTextEncodeConvertHelper
 {
 
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
 
         string FileName;
@@ -23,10 +25,12 @@ namespace UTAUTextEncodeConvertHelper
         public Form1()
         {
             InitializeComponent();
+            Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
         }
 
         public Form1(string ustPath)
         {
+            Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
             InitializeComponent();
             if (!string.IsNullOrEmpty(ustPath))
             {
@@ -139,7 +143,7 @@ namespace UTAUTextEncodeConvertHelper
         private void Form1_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            //FormBorderStyle = FormBorderStyle.FixedSingle;
             if (UtauPlugin)
             {
                 buttonOpenPath.Enabled = false;
@@ -149,6 +153,7 @@ namespace UTAUTextEncodeConvertHelper
 
             backgroundWorker.WorkerReportsProgress = true;
             backgroundWorker.WorkerSupportsCancellation = true;
+            Fx.EffectsWindows(Handle, 150, Fx.AW_BLEND);
         }
 
         private void buttonOpenPath_Click(object sender, EventArgs e)
@@ -264,7 +269,7 @@ namespace UTAUTextEncodeConvertHelper
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Fx.EffectsWindows(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
+            Fx.EffectsWindows(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
         }
 
         private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
