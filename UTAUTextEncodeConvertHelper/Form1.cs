@@ -25,17 +25,20 @@ namespace UTAUTextEncodeConvertHelper
         public Form1()
         {
             InitializeComponent();
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
-            //var materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
         }
 
         public Form1(string ustPath)
         {
-            Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
             InitializeComponent();
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             if (!string.IsNullOrEmpty(ustPath))
             {
                 Text += " - 正作为UTAU插件运行";
@@ -47,6 +50,7 @@ namespace UTAUTextEncodeConvertHelper
                 richTextBoxAfter.Text = File.ReadAllText(ustPath, Encoding.Default);
                 FileName = ustPath;
             }
+            Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
         }
 
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
