@@ -41,7 +41,7 @@ namespace UTAUTextEncodeConvertHelper
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             if (!string.IsNullOrEmpty(ustPath))
             {
-                Text += " - 正作为UTAU插件运行";
+                Text += " - UTAU Plugin";
                 buttonRead.Hide();
                 buttonSaveAs.Hide();
                 buttonSave.Text = "确定";
