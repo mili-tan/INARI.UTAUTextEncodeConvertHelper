@@ -5,6 +5,8 @@ using System.IO;
 using Microsoft.VisualBasic.Devices;
 using MaterialSkin.Controls;
 using MaterialSkin;
+// ReSharper disable InconsistentNaming
+// ReSharper disable LocalizableElement
 
 namespace UTAUTextEncodeConvertHelper
 {
@@ -12,19 +14,18 @@ namespace UTAUTextEncodeConvertHelper
     public partial class Form1 : MaterialForm
     {
 
-        string FileName;
-        string SafeFileName;
-        string FoldPath;
-        string MyMsg = "";
-        bool UtauPlugin = false;
-        ToolTip ToolTip = new ToolTip();
-        Encoding JPN = Encoding.GetEncoding("Shift_JIS");
-        Encoding CHN = Encoding.GetEncoding("gb2312");
-        Encoding MyEncode;
+        private string FileName;
+        private string FoldPath;
+        private string MyMsg = "";
+        private bool UtauPlugin;
+        private readonly Encoding JPN = Encoding.GetEncoding("Shift_JIS");
+        private readonly Encoding CHN = Encoding.GetEncoding("gb2312");
+        private Encoding MyEncode;
 
         public Form1()
         {
             InitializeComponent();
+            UtauPlugin = false;
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -35,6 +36,7 @@ namespace UTAUTextEncodeConvertHelper
         public Form1(string ustPath)
         {
             InitializeComponent();
+            UtauPlugin = false;
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -85,7 +87,6 @@ namespace UTAUTextEncodeConvertHelper
             if (touchStone == DialogResult.OK)
             {
                 FileName = openFileDialog.FileName;
-                SafeFileName = openFileDialog.SafeFileName;
                 richTextBoxAfter.Text = File.ReadAllText(FileName, Encoding.Default);
             }
         }
@@ -221,7 +222,6 @@ namespace UTAUTextEncodeConvertHelper
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
-                Computer myComputer = new Computer();
             }
             MyEncode = CHN;
             buttonConvertOK.Enabled = true;
