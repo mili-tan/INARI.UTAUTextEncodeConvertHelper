@@ -41,7 +41,7 @@ namespace UTAUTextEncodeConvertHelper
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             if (!string.IsNullOrEmpty(ustPath))
             {
-                Text += " - UTAU Plugin";
+                Text += @" - UTAU Plugin";
                 buttonRead.Hide();
                 buttonSaveAs.Hide();
                 buttonSave.Text = "确定";
@@ -51,6 +51,12 @@ namespace UTAUTextEncodeConvertHelper
                 FileName = ustPath;
             }
             Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
+        }
+
+        public sealed override string Text
+        {
+            get { return base.Text; }
+            set { base.Text = value; }
         }
 
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
@@ -88,7 +94,7 @@ namespace UTAUTextEncodeConvertHelper
         {
             try
             {
-                if (FileName == null || FileName == "" || FileName == " ")
+                if (string.IsNullOrEmpty(FileName) || FileName == " ")
                 {
                     MessageBox.Show("文件名为空" + "\n\r\n\r保存文件失败。");
                 }
@@ -98,7 +104,7 @@ namespace UTAUTextEncodeConvertHelper
                 }
                 else
                 {
-                    if (MyEncode == JPN)
+                    if (Equals(MyEncode, JPN))
                     {
                         File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
@@ -130,9 +136,9 @@ namespace UTAUTextEncodeConvertHelper
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileNameSaveAs;
-                if ((fileNameSaveAs = saveFileDialog.FileName.ToString()) != null)
+                if ((fileNameSaveAs = saveFileDialog.FileName) != null)
                 {
-                    if (MyEncode == JPN)
+                    if (Equals(MyEncode, JPN))
                     {
                         File.WriteAllText(fileNameSaveAs, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
                     }
@@ -215,7 +221,7 @@ namespace UTAUTextEncodeConvertHelper
             foreach (FileInfo file in folder.GetFiles("*.*"))
             {
                 listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
-                Computer MyComputer = new Computer();
+                Computer myComputer = new Computer();
             }
             MyEncode = CHN;
             buttonConvertOK.Enabled = true;
@@ -245,8 +251,8 @@ namespace UTAUTextEncodeConvertHelper
                         {
                             if (myFileName != EncodeConvert.Converter(myFileName, MyEncode))
                             {
-                                Computer MyComputer = new Computer();
-                                MyComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, MyEncode));
+                                Computer myComputer = new Computer();
+                                myComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, MyEncode));
                             }
                             else
                             {
@@ -256,7 +262,7 @@ namespace UTAUTextEncodeConvertHelper
                     }
                     catch (Exception exp)
                     {
-                        MessageBox.Show("[Warning]" + exp.Message);
+                        MessageBox.Show(@"[Warning]" + exp.Message);
                     }
                     listBoxAfter.Items.Clear();
                     listBoxBefore.Items.Clear();
