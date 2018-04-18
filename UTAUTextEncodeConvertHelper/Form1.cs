@@ -3,15 +3,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.Devices;
-using MaterialSkin.Controls;
-using MaterialSkin;
 // ReSharper disable InconsistentNaming
 // ReSharper disable LocalizableElement
 
 namespace UTAUTextEncodeConvertHelper
 {
 
-    public partial class Form1 : MaterialForm
+    public partial class Form1 : Form
     {
 
         private string FileName;
@@ -26,10 +24,10 @@ namespace UTAUTextEncodeConvertHelper
         {
             InitializeComponent();
             UtauPlugin = false;
-            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
+            //MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
         }
 
@@ -37,10 +35,10 @@ namespace UTAUTextEncodeConvertHelper
         {
             InitializeComponent();
             UtauPlugin = false;
-            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
+            //MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             if (!string.IsNullOrEmpty(ustPath))
             {
                 Text += @" - UTAU Plugin";
