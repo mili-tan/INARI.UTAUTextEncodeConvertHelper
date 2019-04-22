@@ -24,10 +24,6 @@ namespace UTAUTextEncodeConvertHelper
         {
             InitializeComponent();
             UtauPlugin = false;
-            //MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
             Fx.EffectsWindows(Handle, 200, Fx.AW_BLEND);
         }
 
@@ -35,16 +31,13 @@ namespace UTAUTextEncodeConvertHelper
         {
             InitializeComponent();
             UtauPlugin = false;
-            //MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey500, Primary.BlueGrey700, Primary.BlueGrey600, Accent.LightBlue700, TextShade.WHITE);
+
             if (!string.IsNullOrEmpty(ustPath))
             {
                 Text += @" - UTAU Plugin";
                 buttonRead.Hide();
                 buttonSaveAs.Hide();
-                buttonSave.Text = "确定";
+                buttonSave.Text = "OK";
 
                 UtauPlugin = true;
                 richTextBoxAfter.Text = File.ReadAllText(ustPath, Encoding.Default);
@@ -55,8 +48,8 @@ namespace UTAUTextEncodeConvertHelper
 
         public sealed override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         private void buttonConvertToJPN_Click(object sender, EventArgs e)
@@ -94,32 +87,24 @@ namespace UTAUTextEncodeConvertHelper
             try
             {
                 if (string.IsNullOrEmpty(FileName) || FileName == " ")
-                {
                     MessageBox.Show("文件名为空" + "\n\r\n\r保存文件失败。");
-                }
                 else if (richTextBoxBefore.Text == "")
-                {
                     MessageBox.Show("未经转换。");
-                }
                 else
                 {
                     if (Equals(MyEncode, JPN))
-                    {
                         File.WriteAllText(FileName, richTextBoxAfter.Text.Replace("/n", "/n/r"), JPN);
-                    }
                     else
-                    {
                         File.WriteAllText(FileName, richTextBoxBefore.Text.Replace("/n", "/n/r"), Encoding.Default);
-                    }
+
                     if (UtauPlugin)
                     {
                         Close();
                         MessageBox.Show("转换完成！");
                     }
                     else
-                    {
                         MessageBox.Show("文件保存成功！");
-                    }
+
                     richTextBoxAfter.Clear();
                     richTextBoxBefore.Clear();
                 }
@@ -254,7 +239,7 @@ namespace UTAUTextEncodeConvertHelper
                             }
                             else
                             {
-                                MessageBox.Show("[已跳过] " + myFileName);
+                                MessageBox.Show("[Pass] " + myFileName);
                             }
                         }
                     }
@@ -312,7 +297,7 @@ namespace UTAUTextEncodeConvertHelper
                     backgroundWorker.ReportProgress(i++);
                 }
 
-                MessageBox.Show("[OK]转换完成 \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay.ToString() + "\n\r" + MyMsg);
+                MessageBox.Show("[OK]Done! \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay + "\n\r" + MyMsg);
 
             }
         }
