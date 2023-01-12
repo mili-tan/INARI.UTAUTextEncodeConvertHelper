@@ -43,7 +43,7 @@
             this.buttonConvertToJPN = new System.Windows.Forms.Button();
             this.buttonRead = new System.Windows.Forms.Button();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.processing = new System.Windows.Forms.Label();
             this.buttonConvertOK = new System.Windows.Forms.Button();
             this.buttonFileToUTF8 = new System.Windows.Forms.Button();
             this.buttonFileToGBK = new System.Windows.Forms.Button();
@@ -158,7 +158,8 @@
             // 
             // tabPageFile
             // 
-            this.tabPageFile.Controls.Add(this.progressBar);
+            resources.ApplyResources(this.tabPageFile, "tabPageFile");
+            this.tabPageFile.Controls.Add(this.processing);
             this.tabPageFile.Controls.Add(this.buttonConvertOK);
             this.tabPageFile.Controls.Add(this.buttonFileToUTF8);
             this.tabPageFile.Controls.Add(this.buttonFileToGBK);
@@ -167,14 +168,15 @@
             this.tabPageFile.Controls.Add(this.listBoxAfter);
             this.tabPageFile.Controls.Add(this.labelFoldPath);
             this.tabPageFile.Controls.Add(this.buttonOpenPath);
-            resources.ApplyResources(this.tabPageFile, "tabPageFile");
             this.tabPageFile.Name = "tabPageFile";
             this.tabPageFile.UseVisualStyleBackColor = true;
             // 
-            // progressBar
+            // processing
             // 
-            resources.ApplyResources(this.progressBar, "progressBar");
-            this.progressBar.Name = "progressBar";
+            resources.ApplyResources(this.processing, "processing");
+            this.processing.ForeColor = System.Drawing.Color.Green;
+            this.processing.Name = "processing";
+            this.processing.Click += new System.EventHandler(this.processing_Click);
             // 
             // buttonConvertOK
             // 
@@ -285,7 +287,7 @@
         private System.Windows.Forms.ListBox listBoxBefore;
         private System.Windows.Forms.Button buttonConvertOK;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label processing;
     }
 }
 

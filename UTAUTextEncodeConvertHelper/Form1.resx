@@ -429,28 +429,40 @@
   <data name="&gt;&gt;tabPageText.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 275</value>
+  <data name="tabPageFile.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 23</value>
+  <data name="processing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+  <data name="processing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 16pt</value>
+  </data>
+  <data name="processing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 255</value>
+  </data>
+  <data name="processing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 35</value>
+  </data>
+  <data name="processing.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="progressBar.Visible" type="System.Boolean, mscorlib">
+  <data name="processing.Text" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="processing.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
-    <value>progressBar</value>
+  <data name="&gt;&gt;processing.Name" xml:space="preserve">
+    <value>processing</value>
   </data>
-  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;processing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;processing.Parent" xml:space="preserve">
     <value>tabPageFile</value>
   </data>
-  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;processing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonConvertOK.Enabled" type="System.Boolean, mscorlib">
@@ -567,11 +579,17 @@
   <data name="&gt;&gt;buttonFileToJPN.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="listBoxBefore.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="listBoxBefore.ItemHeight" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="listBoxBefore.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 49</value>
+  </data>
+  <data name="listBoxBefore.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="listBoxBefore.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 284</value>
@@ -591,11 +609,17 @@
   <data name="&gt;&gt;listBoxBefore.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="listBoxAfter.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="listBoxAfter.ItemHeight" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="listBoxAfter.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 49</value>
+  </data>
+  <data name="listBoxAfter.ScrollAlwaysVisible" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="listBoxAfter.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 284</value>
@@ -2016,7 +2040,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>UTAU TextEncode Convert Helper 1.22</value>
+    <value>UTAU TextEncode Convert Helper 1.22 infintemoon.ver</value>
   </data>
   <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
     <value>openFileDialog</value>
