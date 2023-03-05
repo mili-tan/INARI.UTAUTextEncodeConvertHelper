@@ -3,6 +3,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.Devices;
+using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 // ReSharper disable InconsistentNaming
 // ReSharper disable LocalizableElement
 
@@ -153,7 +155,17 @@ namespace UTAUTextEncodeConvertHelper
             backgroundWorker.WorkerSupportsCancellation = true;
             Fx.EffectsWindows(Handle, 150, Fx.AW_BLEND);
         }
-
+        void RecursiveSearch(DirectoryInfo folder)
+        {
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                listBoxAfter.Items.Add(file.FullName);
+            }
+            foreach (DirectoryInfo subfolder in folder.GetDirectories())
+            {
+                RecursiveSearch(subfolder);
+            }
+        }
         private void buttonOpenPath_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -162,26 +174,29 @@ namespace UTAUTextEncodeConvertHelper
                 DirectoryInfo folder = new DirectoryInfo(FoldPath);
                 labelFoldPath.Text = "文件夹路径：" + FoldPath;
                 listBoxAfter.Items.Clear();
-                foreach (FileInfo file in folder.GetFiles("*.*"))
-                {
-                    listBoxAfter.Items.Add(file.Name);
-                }
+                RecursiveSearch(folder);
                 buttonFileToGBK.Enabled = true;
                 buttonFileToJPN.Enabled = true;
                 buttonFileToUTF8.Enabled = true;
-
                 openFileDialog.InitialDirectory = FoldPath;
             }
         }
-
+        void RecursiveSearchAndConvert(string path, Encoding targetEncoding)
+        {
+            DirectoryInfo folder = new DirectoryInfo(path);
+            foreach (FileInfo file in folder.GetFiles("."))
+            {
+                listBoxBefore.Items.Add(EncodeConvert.Converter(file.FullName, targetEncoding));
+            }
+            foreach (DirectoryInfo subfolder in folder.GetDirectories())
+            {
+                RecursiveSearchAndConvert(subfolder.FullName, targetEncoding);
+            }
+        }
         private void buttonFileToJPN_Click(object sender, EventArgs e)
         {
             listBoxBefore.Items.Clear();
-            DirectoryInfo folder = new DirectoryInfo(FoldPath);
-            foreach (FileInfo file in folder.GetFiles("*.*"))
-            {
-                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, JPN));
-            }
+            RecursiveSearchAndConvert(FoldPath, JPN);
             MyEncode = JPN;
             buttonConvertOK.Enabled = true;
         }
@@ -190,10 +205,7 @@ namespace UTAUTextEncodeConvertHelper
         {
             listBoxBefore.Items.Clear();
             DirectoryInfo folder = new DirectoryInfo(FoldPath);
-            foreach (FileInfo file in folder.GetFiles("*.*"))
-            {
-                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, CHN));
-            }
+            RecursiveSearchAndConvert(FoldPath, CHN);
             MyEncode = CHN;
             buttonConvertOK.Enabled = true;
         }
@@ -202,21 +214,67 @@ namespace UTAUTextEncodeConvertHelper
         {
             listBoxBefore.Items.Clear();
             DirectoryInfo folder = new DirectoryInfo(FoldPath);
-            foreach (FileInfo file in folder.GetFiles("*.*"))
-            {
-                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, Encoding.UTF8));
-            }
-            MyEncode = CHN;
+            RecursiveSearchAndConvert(FoldPath, Encoding.UTF8);
+            MyEncode = Encoding.UTF8;
             buttonConvertOK.Enabled = true;
         }
 
         private void buttonConvertOK_Click(object sender, EventArgs e)
         {
-            progressBar.Maximum = new DirectoryInfo(FoldPath).GetFiles().Length;
-            progressBar.Visible = true;
+            /* progressBar.Maximum = new DirectoryInfo(FoldPath).GetFiles().Length;
+             progressBar.Visible = true;*/
+            processing.Invoke((MethodInvoker)delegate {
+                processing.Visible = true;
+            });
             backgroundWorker.RunWorkerAsync();
         }
 
+        //private void listBoxAfter_DoubleClick(object sender, EventArgs e)
+        //{
+        //    if (listBoxAfter.SelectedItem != null)
+        //    {
+        //        if (MyEncode == null)
+        //        {
+        //            MessageBox.Show("清先选择文件编码。");
+        //        }
+        //        else
+        //        {
+        //            try
+        //            {
+        //                string myFileName = listBoxAfter.SelectedItem.ToString();
+        //                if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
+        //                {
+        //                    if (myFileName != EncodeConvert.Converter(myFileName, MyEncode))
+        //                    {
+        //                        Computer myComputer = new Computer();
+        //                        myComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, MyEncode));
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("[Pass] " + myFileName);
+        //                    }
+        //                }
+        //            }
+        //            catch (Exception exp)
+        //            {
+        //                MessageBox.Show(@"[Warning]" + exp.Message);
+        //            }
+        //            listBoxAfter.Items.Clear();
+        //            listBoxBefore.Items.Clear();
+
+        //            foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
+        //            {
+        //                listBoxAfter.Items.Add(file.Name);
+        //            }
+
+        //            foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
+        //            {
+        //                listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, MyEncode));
+        //            }
+        //        }
+
+        //    }
+        //}
         private void listBoxAfter_DoubleClick(object sender, EventArgs e)
         {
             if (listBoxAfter.SelectedItem != null)
@@ -232,10 +290,12 @@ namespace UTAUTextEncodeConvertHelper
                         string myFileName = listBoxAfter.SelectedItem.ToString();
                         if (DialogResult.OK == MessageBox.Show("仅转换" + myFileName + "吗？", "转换", MessageBoxButtons.OKCancel))
                         {
-                            if (myFileName != EncodeConvert.Converter(myFileName, MyEncode))
+                            string targetFileName = EncodeConvert.Converter(myFileName, MyEncode);
+                            if (targetFileName != myFileName)
                             {
                                 Computer myComputer = new Computer();
-                                myComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, EncodeConvert.Converter(myFileName, MyEncode));
+                                myComputer.FileSystem.RenameFile(FoldPath + @"\" + myFileName, targetFileName);
+                                listBoxAfter.Items[listBoxAfter.SelectedIndex] = targetFileName;
                             }
                             else
                             {
@@ -247,20 +307,7 @@ namespace UTAUTextEncodeConvertHelper
                     {
                         MessageBox.Show(@"[Warning]" + exp.Message);
                     }
-                    listBoxAfter.Items.Clear();
-                    listBoxBefore.Items.Clear();
-
-                    foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
-                    {
-                        listBoxAfter.Items.Add(file.Name);
-                    }
-
-                    foreach (FileInfo file in new DirectoryInfo(FoldPath).GetFiles("*.*"))
-                    {
-                        listBoxBefore.Items.Add(EncodeConvert.Converter(file.Name, MyEncode));
-                    }
                 }
-
             }
         }
 
@@ -269,7 +316,7 @@ namespace UTAUTextEncodeConvertHelper
             Fx.EffectsWindows(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
         }
 
-        private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        /*private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             int i = 1;
             if (MyEncode == null)
@@ -300,9 +347,90 @@ namespace UTAUTextEncodeConvertHelper
                 MessageBox.Show("[OK]Done! \n\r[耗时]" + DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay + "\n\r" + MyMsg);
 
             }
+        }*/
+        public int CountFiles(string path)
+        {
+            int count = 0;
+            // Count files in current directory
+            count += Directory.GetFiles(path).Length;
+            // Recursively count files in subdirectories
+            foreach (string subdir in Directory.GetDirectories(path))
+            {
+                count += CountFiles(subdir);
+            }
+            return count;
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            /*int totalFiles = CountFiles(FoldPath);
+            int processedFiles = 0;
+            DirectoryInfo folder = new DirectoryInfo(FoldPath);
+            foreach (FileInfo file in folder.GetFiles("*.*"))
+            {
+                try
+                {
+                    if (file.Name != EncodeConvert.Converter(file.Name, MyEncode))
+                    {
+                        Computer MyComputer = new Computer();
+                        MyComputer.FileSystem.RenameFile(file.FullName, EncodeConvert.Converter(file.Name, MyEncode));
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MyMsg += "[Warning]" + exp.Message + "\n\r";
+                }
+                processedFiles++;
+                int progress = (int)((float)processedFiles / totalFiles * 100);
+                backgroundWorker.ReportProgress(progress);
+            }*/
+           
+
+
+            if (MyEncode == null)
+            {
+                MessageBox.Show("请先选择文件编码。");
+                return;
+            }
+
+            long startTime = DateTime.Now.ToBinary();
+            RecursiveRename(FoldPath, MyEncode);
+            var timeSpent = DateTime.FromBinary(DateTime.Now.ToBinary() - startTime).TimeOfDay;
+            MessageBox.Show($"[OK] Done!\n\r[耗时] {timeSpent}\n\r{MyMsg}");
+            processing.Invoke((MethodInvoker)delegate {
+                processing.Visible = false;
+            });
+        }
+
+        void RecursiveRename(string path, Encoding targetEncoding)
+        {
+            int i = 1;
+            var folder = new DirectoryInfo(path);
+            foreach (var file in folder.GetFiles("*.*"))
+            {
+                try
+                {
+                    var targetFileName = EncodeConvert.Converter(file.Name, targetEncoding);
+                    if (targetFileName != file.Name)
+                    {
+                        var myComputer = new Computer();
+                        myComputer.FileSystem.RenameFile(file.FullName, targetFileName);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MyMsg += $"[Warning] {exp.Message}\n\r";
+                }
+                backgroundWorker.ReportProgress(i++);
+            }
+            foreach (var subfolder in folder.GetDirectories())
+            {
+                RecursiveRename(subfolder.FullName, targetEncoding);
+            }
+        }
+
+
+        /*private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             MyMsg = "";
 
@@ -319,11 +447,33 @@ namespace UTAUTextEncodeConvertHelper
             buttonConvertOK.Enabled = false;
             progressBar.Value = 0;
             progressBar.Visible = false;
+        }*/
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MyMsg = "";
+            listBoxAfter.Items.Clear();
+            listBoxBefore.Items.Clear();
+
+            var files = Directory.GetFiles(FoldPath, "*.*", SearchOption.AllDirectories);
+            listBoxAfter.Items.AddRange(files);
+
+            buttonConvertOK.Enabled = false;
+            /*
+            progressBar.Value = 0;
+            progressBar.Visible = false;*/
         }
+
 
         private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            progressBar.Value = e.ProgressPercentage;
+            /*progressBar.Minimum = 0;
+            progressBar.Maximum = 100;
+            progressBar.Value = e.ProgressPercentage;*/
+        }
+
+        private void processing_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

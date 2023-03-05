@@ -1,2 +1,4 @@
 # UTAUTextEncodeConvertHelper
 简单而且辣鸡的UTAU相关用文本编码转换工具
+v1.3beta在v1.22版本上增加了对多层文件夹的支持、加入了横向滚动条并修正了部分bug。
+因为个人能力有限，移除了进度条还请见谅。
